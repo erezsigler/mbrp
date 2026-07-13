@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מפגש 2 — גישה חדשה לאי-נוחות | מניעת הישנות מבוססת מיינדפולנס</title>
+<style>
+  :root{
+    --navy: #1E3A52;
+    --navy-deep: #16293b;
+    --sage: #6E8F72;
+    --sage-light: #E7EEE6;
+    --paper: #FAF8F3;
+    --paper-card: #FFFFFF;
+    --ink: #2B2B27;
+    --ink-soft: #57544c;
+    --line: #DCD5C7;
+    --saved: #4C7A52;
+    --example: #F3EFE4;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", Assistant, Arial, Helvetica, sans-serif;
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px;}
+
+  header.masthead{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:36px 0 30px;
+    margin-bottom:36px;
+  }
+  header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
+  .back-link{
+    color:#CFE0D5;
+    font-size:13.5px;
+    text-decoration:none;
+    margin-bottom:6px;
+    width:fit-content;
+  }
+  .back-link:hover{ text-decoration:underline; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#BFD1C6;
+    font-weight:600;
+  }
+  h1.title{
+    margin:2px 0 0;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .subtitle{
+    color:#CFE0D5;
+    font-size:15px;
+    margin-top:4px;
+  }
+
+  section{margin-bottom:40px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:14px;
+    border-bottom:2px solid var(--sage);
+    padding-bottom:8px;
+  }
+  .section-num{
+    font-variant-numeric: tabular-nums;
+    font-weight:700;
+    color:var(--sage);
+    font-size:15px;
+    background:var(--sage-light);
+    padding:3px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+  }
+
+  .topic-text p{margin:0 0 14px;}
+  .topic-text p:last-child{margin-bottom:0;}
+
+  /* challenge list (2.1) */
+  .practice-steps{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .practice-steps.no-margin{margin-top:0;}
+  .practice-steps li{
+    display:grid;
+    grid-template-columns:32px 1fr;
+    gap:12px;
+  }
+  .practice-steps .pnum{
+    width:32px;height:32px;border-radius:8px;
+    background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:14px;flex-shrink:0;
+  }
+  .practice-steps .ptitle{font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .practice-steps .pdesc{color:var(--ink-soft);font-size:14.5px;}
+
+  /* tables (shared) */
+  .log-intro{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:16px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .log-intro .instructions{color:var(--ink-soft);font-size:14.5px;max-width:520px;}
+  .save-status{
+    font-size:13px;
+    color:var(--saved);
+    display:flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .save-status .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--saved);
+    display:inline-block;
+  }
+
+  .log-table-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line);}
+  table.log{
+    width:100%;
+    border-collapse:collapse;
+    min-width:680px;
+    background:var(--paper-card);
+  }
+  table.log thead th{
+    background:var(--navy);
+    color:#fff;
+    font-size:13.5px;
+    font-weight:600;
+    padding:12px 10px;
+    text-align:center;
+    border-left:1px solid rgba(255,255,255,.15);
+  }
+  table.log thead th:last-child{border-left:none;}
+  table.log td{
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+    padding:8px;
+    vertical-align:top;
+  }
+  table.log td:last-child{border-left:none;}
+  table.log tbody tr:nth-child(even){background:#FCFBF8;}
+  table.log tbody tr.example-row{background:var(--example);}
+  table.log tbody tr.example-row td{ color:var(--ink-soft); font-size:13.5px; padding:10px 8px;}
+  table.log tbody tr.example-row td:first-child{font-weight:700; color:var(--navy);}
+  .example-tag{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    color:#fff;
+    background:var(--sage);
+    padding:1px 8px;
+    border-radius:10px;
+    margin-bottom:4px;
+  }
+
+  .cell-day{width:100px;}
+  .cell-minutes{width:110px;}
+  .cell-activity{width:190px;}
+  .cell-notes{min-width:190px;}
+  .cell-narrow{width:150px;}
+
+  input[type="text"], input[type="number"], textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:7px 8px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    resize:vertical;
+  }
+  input[type="text"]:focus, input[type="number"]:focus, textarea:focus{
+    outline:none;
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px var(--sage-light);
+  }
+  .minutes-row{display:flex;align-items:center;gap:6px;}
+  .minutes-row span{font-size:13px;color:var(--ink-soft);white-space:nowrap;}
+  textarea{min-height:44px;}
+
+  .toolbar{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:9px 18px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    transition:background .15s ease;
+  }
+  button:hover{background:var(--sage-light);}
+  button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  button.primary:hover{background:var(--navy-deep);}
+
+  footer{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  @media print{
+    header.masthead{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .toolbar, .save-status{display:none !important;}
+    button{display:none !important;}
+    body{padding-bottom:0;}
+  }
+
+  @media (max-width:600px){
+    h1.title{font-size:21px;}
+    .card{padding:16px;}
+    .log-intro{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index.html" class="back-link">‹ חזרה לתוכנית המפגשים</a>
+    <span class="eyebrow">מניעת הישנות מבוססת מיינדפולנס — חוברת משתתף</span>
+    <h1 class="title">מפגש 2: גישה חדשה לאי-נוחות</h1>
+    <span class="subtitle">דפים 2.1–2.4 · אתגרים נפוצים, דף עבודה טריגרים, נושא המפגש וגיליון מעקב</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 2.1 -->
+  <section id="s2-1">
+    <div class="section-head">
+      <span class="section-num">2.1</span>
+      <h2>אתגרים נפוצים בתרגול מדיטציה (ובחיי היומיום)</h2>
+    </div>
+    <div class="card">
+      <div class="topic-text">
+        <p>אלפי שנות תרגול ואינספור מתרגלים מראים שיש אתגרים החוזרים על עצמם שוב ושוב בתרגול המדיטציה. חוויות אלה, בזמן שיכולות להיות לא נעימות, אינן שליליות או מעידות משהו על התירגול שלך — הן פשוט חלק מתרגול המדיטציה. הן אינן מעידות שאת.ה מבצע.ת את התרגול בצורה שגויה, או שמדיטציה אינה מתאימה לך, ואפילו לא שהתירגול הפעם היה "טוב" או "רע". כשאנחנו מזהים אותם, הם הופכים להיות פחות מחסום או "בעיה" ונוכל ללמוד להתבונן בהם בסקרנות וללא שיפוטיות, ולהפוך אותם לחומר עבודה!</p>
+      </div>
+
+      <ol class="practice-steps" style="margin-top:22px;">
+        <li>
+          <span class="pnum">1</span>
+          <div>
+            <div class="ptitle">סלידה</div>
+            <div class="pdesc">הרצון שמשהו שנוכח עכשיו בחוויה הפנימית שלי לא יהיה נוכח. יכול להופיע כמחשבות ממוקדות ("נמאס לי..., אני לא יכול יותר...״), אבל יכול גם להופיע בדרכים יותר מתוחכמות כמו רגשות של פחד, כעס, עצבנות, גועל או טינה והמחשבות הנילוות להן.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">2</span>
+          <div>
+            <div class="ptitle">כמיהה או השתוקקות</div>
+            <div class="pdesc">הרצון שמשהו שאינו נוכח עכשיו בחוויה הפנימית שלי כן יהיה נוכח. יכולה להיות עדינה כמו רצון להרגיש קצת יותר רגוע ושליו, או חזקה כמו חשיבה אובססיבית או דחף כפייתי.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">3</span>
+          <div>
+            <div class="ptitle">אי שקט ועצבנות</div>
+            <div class="pdesc">יכולה להיות פיזית כמו רצון חזק לזוז ולהגיב לתחושות גוף, ויכולה להיות תודעתית ולהתבטא בתודעה לא שקטה, תזזיתית ותגובתית שמתקשה לשקוט.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">4</span>
+          <div>
+            <div class="ptitle">ישנוניות או עייפות</div>
+            <div class="pdesc">יכולה להיות עייפות וישנוניות פיזית (עד כדי הירדמות) או עייפות ואיטיות מנטליות, קושי להישאר עם אובייקט המדיטציה ולעקוב אחר ההוראות. גוף, תודעה, או שניהם ביחד.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">5</span>
+          <div>
+            <div class="ptitle">ספק</div>
+            <div class="pdesc">לגבי עצמך — "אני לא יכול לעשות את התרגול הזה, הוא טוב לאחרים, אבל לא בשבילי!״, ספק לגבי התרגול ושימושיותו — ״איזה תירגול מגוחך! במה יעזור לי להתבונן בשקט בנשימה?״ ספק יכול להיות מסובך במיוחד כי הוא לעיתים קרובות מאוד משכנע.</div>
+          </div>
+        </li>
+      </ol>
+
+      <div class="topic-text" style="margin-top:16px;">
+        <p><strong>מה יכול לעזור?</strong><br>זיכרו שסוג המדיטציה שאנחנו מתרגלים קיים כבר אלפי שנים וסייע למיליוני אנשים לשנות את חייהם. אתגרים אלה קטנים עם הזמן והאימון. החלק החשוב הוא להתמיד, וכשאתגרים אלה עולים (והם יעלו) — להאיר עליהן את זרקור המודעות שלנו ברוח של קבלה, חמלה וסקרנות.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.2 -->
+  <section id="s2-2">
+    <div class="section-head">
+      <span class="section-num">2.2</span>
+      <h2>דף עבודה — תשומת לב לטריגרים</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">שימו לב השבוע למה שמטרגר (מפעיל אתכם רגשית) אתכם או לרגעים שבהם אתם מרגישים תגובתיים. השתמשו בשאלות הבאות כדי להתבונן בחוויה הפנימית של מחשבות, רגשות ותחושות ברגעים אלו. המילוי נשמר אוטומטית בדפדפן שלכם בלבד.</p>
+        <span class="save-status" id="saveStatus2"><span class="dot"></span><span id="saveStatusText2">הנתונים שלך שמורים במכשיר זה</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-day">יום / תאריך</th>
+              <th class="cell-narrow">טריגר</th>
+              <th class="cell-narrow">מחשבות</th>
+              <th class="cell-narrow">רגשות</th>
+              <th class="cell-narrow">תחושות</th>
+              <th class="cell-notes">מה עשיתי?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="example-row">
+              <td><span class="example-tag">דוגמה</span><br>שישי 3/26</td>
+              <td>ויכוח עם חבר</td>
+              <td>"הוא חושב שאני לא מבין שום דבר"</td>
+              <td>חרדה, כמיהה</td>
+              <td>לחץ בחזה, כפות ידיים קרות ולחות, לב פועם מהר</td>
+              <td>יצאתי להליכה, ומאוחר יותר שוחחתי עם חבר.ה על מה שהטריד אותי.</td>
+            </tr>
+          </tbody>
+          <tbody id="triggersBody">
+            <!-- rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn2">נקה גיליון</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.3 -->
+  <section id="s2-3">
+    <div class="section-head">
+      <span class="section-num">2.3</span>
+      <h2>נושא מפגש 2 ותרגול יומי</h2>
+    </div>
+    <div class="card">
+      <div class="topic-text">
+        <p><strong>נושא:</strong> כאשר עולה בנו תשוקה או דחף רובנו נוטים להכנע להם או להתנגד להם בכוח. מפגש זה מתמקד בדרך התמודדות חדשה לחוויות אלה. נתחיל בללמוד לזהות מה מטרגר אותנו, ואז נתבונן כיצד טריגרים אלה מובילים לכל התחושות, המחשבות והרגשות שלעיתים קרובות הם חלק מהכמיהה לשימוש. נתרגל להתבונן בחוויה מבלי להגיב אוטומטית. מיינדפולנס יכול לעזור להביא תהליך זה לתוך המודעות שלנו, לאפשר לנו לשבש את שרשרת התגובות האוטומטית, ולהגביר את יכולתנו לבחור בתגובות והתנהגויות שמשרתות אתנו יותר בטווח הארוך.</p>
+      </div>
+
+      <ol class="practice-steps">
+        <li>
+          <span class="pnum">1</span>
+          <div>
+            <div class="ptitle">סריקת גוף</div>
+            <div class="pdesc">עשו כמיטב יכולתכם לתרגל סריקת גוף מדי יום השבוע. תעדו את התירגול וציינו את חוויותיכם בגיליון המעקב.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">2</span>
+          <div>
+            <div class="ptitle">דף העבודה "תשומת לב לטריגרים"</div>
+            <div class="pdesc">מלאו אותו מדי יום. ציינו את המחשבות, הרגשות (כגון: כעס, עצב, חרדה, שמחה) ותחושות הגוף (כגון: לחץ בחזה, רעד) שאתם חווים. אם לא עולים טריגרים או מחשבות על שימוש ביום מסוים, פשוט ציינו זאת. תוכלו גם לציין סוגים אחרים של טריגרים שמעוררים כל רצף חוויה שאתם מעוניינים להתבונן ולשנות את התגובה שלכם אליו.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">3</span>
+          <div>
+            <div class="ptitle">מיינדפולנס בפעילות יומית</div>
+            <div class="pdesc">המשך בתרגול. תוכל להשתמש באותה פעילות או לבחור פעילות אחרת. הפנה את תשומת לבך המלאה לפעילות, שים לב לתחושות, מראות, קולות, מחשבות ואפילו רגשות שעולים.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 2.4 -->
+  <section id="s2-4">
+    <div class="section-head">
+      <span class="section-num">2.4</span>
+      <h2>גיליון מעקב תרגול יומי</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">כל יום, תעד את תרגול המיינדפולנס שלך, וציין גם מחסומים, תצפיות או הערות. המילוי נשמר אוטומטית בדפדפן שלך בלבד — המידע לא נשלח לשום מקום.</p>
+        <span class="save-status" id="saveStatus4"><span class="dot"></span><span id="saveStatusText4">הנתונים שלך שמורים במכשיר זה</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-day">יום / תאריך</th>
+              <th class="cell-minutes">תרגול רשמי עם הקלטה</th>
+              <th class="cell-activity">מיינדפולנס בפעילות יומית</th>
+              <th class="cell-notes">תצפיות, הערות או אתגרים<br><span style="font-weight:400;font-size:12px;">(סלידה, כמיהה, ישנוניות, חוסר מנוחה, ספק)</span></th>
+            </tr>
+          </thead>
+          <tbody id="logBody4">
+            <!-- rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button class="primary" id="printBtn">הדפסה / שמירה כ-PDF</button>
+        <button id="clearBtn4">נקה גיליון</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    מבוסס על: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;');
+  }
+
+  function makeTable(opts){
+    // opts: {storageKey, rows, bodyEl, statusEl, columns:[{key,type,placeholder,width}]}
+    function loadData(){
+      try{
+        const raw = localStorage.getItem(opts.storageKey);
+        return raw ? JSON.parse(raw) : {};
+      }catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(opts.storageKey, JSON.stringify(data));
+        opts.statusEl.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        opts.statusEl.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+      }
+    }
+
+    let data = loadData();
+    const fieldId = (row, field) => opts.storageKey + '_r' + row + '_' + field;
+
+    function buildRows(){
+      opts.bodyEl.innerHTML = '';
+      for(let i=1; i<=opts.rows; i++){
+        const rowData = data['row'+i] || {};
+        const tr = document.createElement('tr');
+        tr.innerHTML = opts.columns.map(col => {
+          const val = escapeHtml(rowData[col.key] || '');
+          if(col.type === 'textarea'){
+            return `<td class="${col.cls||''}"><textarea id="${fieldId(i,col.key)}" placeholder="${col.placeholder}">${val}</textarea></td>`;
+          }
+          if(col.type === 'minutes'){
+            return `<td class="${col.cls||''}"><div class="minutes-row"><input type="number" min="0" id="${fieldId(i,col.key)}" placeholder="0" value="${val}"><span>דקות</span></div></td>`;
+          }
+          return `<td class="${col.cls||''}"><input type="text" id="${fieldId(i,col.key)}" placeholder="${col.placeholder}" value="${val}"></td>`;
+        }).join('');
+        opts.bodyEl.appendChild(tr);
+      }
+    }
+
+    let saveTimeout = null;
+    opts.bodyEl.addEventListener('input', function(e){
+      const prefix = opts.storageKey + '_r';
+      if(!e.target.id.startsWith(prefix)) return;
+      const rest = e.target.id.slice(prefix.length); // "N_field"
+      const us = rest.indexOf('_');
+      const rowNum = rest.slice(0, us);
+      const field = rest.slice(us+1);
+      const key = 'row' + rowNum;
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      opts.statusEl.textContent = 'שומר...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    if(opts.clearBtn){
+      opts.clearBtn.addEventListener('click', function(){
+        if(confirm('לנקות את כל הגיליון? הפעולה לא ניתנת לביטול.')){
+          data = {};
+          saveData(data);
+          buildRows();
+        }
+      });
+    }
+
+    buildRows();
+    if(Object.keys(data).length){
+      opts.statusEl.textContent = 'נטען מהשמירה האחרונה במכשיר זה';
+    }
+  }
+
+  // 2.2 Triggers worksheet
+  makeTable({
+    storageKey: 'mbrp_session2_triggers_v1',
+    rows: 7,
+    bodyEl: document.getElementById('triggersBody'),
+    statusEl: document.getElementById('saveStatusText2'),
+    clearBtn: document.getElementById('clearBtn2'),
+    columns: [
+      {key:'day', type:'text', placeholder:'יום ג׳, 12/3', cls:'cell-day'},
+      {key:'trigger', type:'text', placeholder:'טריגר', cls:'cell-narrow'},
+      {key:'thoughts', type:'text', placeholder:'מחשבות...', cls:'cell-narrow'},
+      {key:'emotions', type:'text', placeholder:'רגשות', cls:'cell-narrow'},
+      {key:'sensations', type:'text', placeholder:'תחושות גוף', cls:'cell-narrow'},
+      {key:'action', type:'textarea', placeholder:'מה עשיתי?', cls:'cell-notes'},
+    ]
+  });
+
+  // 2.4 Daily practice log
+  makeTable({
+    storageKey: 'mbrp_session2_log_v1',
+    rows: 7,
+    bodyEl: document.getElementById('logBody4'),
+    statusEl: document.getElementById('saveStatusText4'),
+    clearBtn: document.getElementById('clearBtn4'),
+    columns: [
+      {key:'day', type:'text', placeholder:'לדוגמה: יום ג׳, 12/3', cls:'cell-day'},
+      {key:'minutes', type:'minutes', placeholder:'0', cls:'cell-minutes'},
+      {key:'activity', type:'text', placeholder:'אילו פעילויות?', cls:'cell-activity'},
+      {key:'notes', type:'textarea', placeholder:'תצפיות, הערות או אתגרים...', cls:'cell-notes'},
+    ]
+  });
+
+  document.getElementById('printBtn').addEventListener('click', function(){
+    window.print();
+  });
+})();
+</script>
+
+</body>
+</html>
