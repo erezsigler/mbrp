@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מפגש 3 — מתגובתיות אימפולסיבית להיענות מודעת | מניעת הישנות מבוססת מיינדפולנס</title>
+<style>
+  :root{
+    --navy: #1E3A52;
+    --navy-deep: #16293b;
+    --sage: #6E8F72;
+    --sage-light: #E7EEE6;
+    --paper: #FAF8F3;
+    --paper-card: #FFFFFF;
+    --ink: #2B2B27;
+    --ink-soft: #57544c;
+    --line: #DCD5C7;
+    --saved: #4C7A52;
+    --auto: #B9694A;
+    --auto-light: #F6E9E3;
+    --skillful: #4C7A52;
+    --skillful-light: #E7EEE6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", Assistant, Arial, Helvetica, sans-serif;
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+
+  header.masthead{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:36px 0 30px;
+    margin-bottom:36px;
+  }
+  header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
+  .back-link{
+    color:#CFE0D5;
+    font-size:13.5px;
+    text-decoration:none;
+    margin-bottom:6px;
+    width:fit-content;
+  }
+  .back-link:hover{ text-decoration:underline; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#BFD1C6;
+    font-weight:600;
+  }
+  h1.title{
+    margin:2px 0 0;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .subtitle{
+    color:#CFE0D5;
+    font-size:15px;
+    margin-top:4px;
+  }
+
+  section{margin-bottom:40px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:14px;
+    border-bottom:2px solid var(--sage);
+    padding-bottom:8px;
+  }
+  .section-num{
+    font-variant-numeric: tabular-nums;
+    font-weight:700;
+    color:var(--sage);
+    font-size:15px;
+    background:var(--sage-light);
+    padding:3px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+  }
+
+  .topic-text p{margin:0 0 14px;}
+  .topic-text p:last-child{margin-bottom:0;}
+
+  .theme-line{
+    font-size:17px;
+    font-weight:700;
+    color:var(--navy);
+    text-align:center;
+    padding:6px 10px 20px;
+    line-height:1.5;
+  }
+
+  blockquote.quote{
+    margin:18px 0;
+    padding:16px 20px;
+    border-inline-start:4px solid var(--sage);
+    background:var(--sage-light);
+    border-radius:6px;
+    font-style:italic;
+    color:var(--navy);
+    font-size:15.5px;
+  }
+  blockquote.quote cite{
+    display:block;
+    margin-top:8px;
+    font-style:normal;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  .distinction-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:20px 0;
+  }
+  .distinction-card{
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .distinction-card.auto{ background:var(--auto-light); border:1px solid #E3C3B2; }
+  .distinction-card.skillful{ background:var(--skillful-light); border:1px solid #C9DBC9; }
+  .distinction-card .d-title{
+    font-weight:700;
+    font-size:15.5px;
+    margin-bottom:6px;
+  }
+  .distinction-card.auto .d-title{ color:var(--auto); }
+  .distinction-card.skillful .d-title{ color:var(--skillful); }
+  .distinction-card .d-text{ font-size:14px; color:var(--ink); }
+
+  @media (max-width:600px){
+    .distinction-grid{ grid-template-columns:1fr; }
+  }
+
+  /* SOBER steps */
+  .steps-list{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .steps-list li{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:14px;
+  }
+  .steps-list .snum{
+    width:44px;height:44px;border-radius:10px;
+    background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:17px;flex-shrink:0;
+  }
+  .steps-list li.final .snum{ background:var(--sage); }
+  .steps-list .stitle{font-weight:700;color:var(--navy);margin-bottom:3px;font-size:15.5px;}
+  .steps-list .sdesc{color:var(--ink-soft);font-size:14.5px;}
+
+  .acronym-strip{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin:22px 0 6px;
+    flex-wrap:wrap;
+  }
+  .acronym-strip span{
+    width:38px;height:38px;
+    border-radius:50%;
+    background:var(--sage-light);
+    color:var(--navy);
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;
+  }
+
+  /* worksheet (page 4) */
+  .log-intro{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:16px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .log-intro .instructions{color:var(--ink-soft);font-size:14.5px;max-width:560px;}
+  .save-status{
+    font-size:13px;
+    color:var(--saved);
+    display:flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .save-status .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--saved);
+    display:inline-block;
+  }
+
+  .scenario{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:20px;
+    background:var(--paper-card);
+  }
+  .scenario:last-child{margin-bottom:0;}
+  .scenario-label{
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .situation-row{margin-bottom:14px;}
+  .situation-row label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--navy);
+    margin-bottom:5px;
+  }
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media (max-width:640px){
+    .two-col{grid-template-columns:1fr;}
+  }
+  .col-box{
+    border-radius:8px;
+    padding:12px 14px;
+  }
+  .col-box.auto{ background:var(--auto-light); border:1px solid #E3C3B2; }
+  .col-box.skillful{ background:var(--skillful-light); border:1px solid #C9DBC9; }
+  .col-box .col-title{
+    font-weight:700;
+    font-size:13.5px;
+    margin-bottom:8px;
+  }
+  .col-box.auto .col-title{ color:var(--auto); }
+  .col-box.skillful .col-title{ color:var(--skillful); }
+
+  .subfield{ margin-bottom:10px; }
+  .subfield:last-child{ margin-bottom:0; }
+  .subfield label{
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .col-box.auto .subfield label{ color:var(--auto); }
+  .col-box.skillful .subfield label{ color:var(--skillful); }
+  .subfield input[type="text"]{ background:#fff; }
+
+  /* guest house intro */
+  .facilitator-note{
+    margin-top:16px;
+    border:1px dashed var(--line);
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    background:#FCFBF8;
+  }
+  .facilitator-note strong{ color:var(--navy); }
+
+  .poem-placeholder{
+    border:1.5px dashed var(--sage);
+    border-radius:10px;
+    padding:22px 24px;
+    background:var(--sage-light);
+    text-align:center;
+    margin-bottom:8px;
+  }
+  .poem-placeholder .pp-title{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15.5px;
+    margin-bottom:6px;
+  }
+  .poem-placeholder .pp-note{
+    color:var(--ink-soft);
+    font-size:13px;
+    max-width:480px;
+    margin:0 auto;
+  }
+
+  .poem-block{
+    text-align:center;
+    padding:8px 10px 4px;
+  }
+  .poem-block .poem-title{
+    font-size:20px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:4px;
+  }
+  .poem-block .poem-author{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .poem-block .poem-body{
+    font-style:italic;
+    font-size:16px;
+    line-height:2;
+    color:var(--ink);
+    max-width:480px;
+    margin:0 auto;
+  }
+  .poem-block .poem-credit{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:22px;
+    font-style:italic;
+  }
+
+  /* example block on 3.2 */
+  .example-block{
+    margin-top:22px;
+    border-radius:10px;
+    padding:18px 20px;
+    background:#FCFBF8;
+    border:1px solid var(--line);
+  }
+  .example-block .ex-label{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:700;
+    color:#fff;
+    background:var(--navy);
+    padding:2px 10px;
+    border-radius:10px;
+    margin-bottom:10px;
+  }
+  .example-block p{ margin:0 0 10px; font-size:14.5px; }
+  .example-block .ex-steps{ margin:0; padding-inline-start:0; list-style:none; }
+  .example-block .ex-steps li{ margin-bottom:7px; font-size:14px; }
+  .example-block .ex-steps b{ color:var(--navy); }
+
+  /* daily log table (3.4) */
+  .log-table-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line);}
+  table.log{
+    width:100%;
+    border-collapse:collapse;
+    min-width:720px;
+    background:var(--paper-card);
+  }
+  table.log thead th{
+    background:var(--navy);
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    padding:12px 8px;
+    text-align:center;
+    border-left:1px solid rgba(255,255,255,.15);
+  }
+  table.log thead th:last-child{border-left:none;}
+  table.log td{
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+    padding:7px;
+    vertical-align:top;
+  }
+  table.log td:last-child{border-left:none;}
+  table.log tbody tr:nth-child(even){background:#FCFBF8;}
+  .cell-day{width:100px;}
+  .cell-minutes{width:100px;}
+  .cell-mid{width:170px;}
+  .cell-notes{min-width:170px;}
+  .minutes-row{display:flex;align-items:center;gap:5px;}
+  .minutes-row span{font-size:12.5px;color:var(--ink-soft);white-space:nowrap;}
+  table.log textarea{min-height:44px;}
+
+  input[type="text"], textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:8px 9px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    resize:vertical;
+  }
+  input[type="text"]:focus, textarea:focus{
+    outline:none;
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px var(--sage-light);
+  }
+  textarea{min-height:90px;}
+
+  .toolbar{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:9px 18px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    transition:background .15s ease;
+  }
+  button:hover{background:var(--sage-light);}
+  button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  button.primary:hover{background:var(--navy-deep);}
+
+  footer{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  @media print{
+    header.masthead{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .toolbar, .save-status{display:none !important;}
+    button{display:none !important;}
+    body{padding-bottom:0;}
+  }
+
+  @media (max-width:600px){
+    h1.title{font-size:21px;}
+    .card{padding:16px;}
+    .log-intro{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index.html" class="back-link">‹ חזרה לתוכנית המפגשים</a>
+    <span class="eyebrow">מניעת הישנות מבוססת מיינדפולנס — חוברת משתתף</span>
+    <h1 class="title">מפגש 3: מתגובתיות אימפולסיבית להיענות מודעת</h1>
+    <span class="subtitle">דפים 3.1–3.4 · בית האורחים, מרחב הערנות, תרגול תגובתיות מול היענות, וגיליון מעקב</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 3.1 -->
+  <section id="s3-1">
+    <div class="section-head">
+      <span class="section-num">3.1</span>
+      <h2>בית האורחים</h2>
+    </div>
+    <div class="card">
+      <div class="poem-block">
+        <div class="poem-title">מלון אורחים</div>
+        <div class="poem-author">רומי (משורר סופי בן המאה ה-13)</div>
+        <div class="poem-body">
+          הוויה אנושית זו היא מלון אורחים<br>
+          בכל בוקר מגיע אורח חדש.<br>
+          שמחה, דיכאון, רוע-לב,<br>
+          מודעות רגעית מגיעה<br>
+          כאורחת בלתי צפויה.<br>
+          קבל את פניהם וארח את כולם!<br>
+          אפילו אם הם המון של תוגות,<br>
+          השוטפות באלימות את ביתך<br>
+          עדיין, נהג בכל אורח בכבוד.<br>
+          אולי הוא מפנה אצלך מקום<br>
+          ומרוקנות אותו מרהיטיו,<br>
+          לשמחה חדשה.<br>
+          המחשבה הקודרת, הבושה, הרשעות,<br>
+          פגוש אותם בפתח בצחוק,<br>
+          והזמן אותם פנימה.<br>
+          הוקר תודה לכל הבאים,<br>
+          כי כל אחד מהם נשלח<br>
+          כמדריך מהעולם שמעבר.
+        </div>
+        <div class="poem-credit">תרגום: סמדר יהודה גזית</div>
+      </div>
+
+      <blockquote class="quote" style="margin-top:22px;">
+        אפשר לקחת מהאדם הכול חוץ מדבר אחד — החירות האנושית האחרונה: לבחור את עמדתו בכל מצב נתון, לבחור את דרכו שלו.
+        <cite>ויקטור פרנקל, האדם מחפש משמעות</cite>
+      </blockquote>
+
+      <div class="theme-line" style="margin-top:22px;">בין תגובתיות אוטומטית להיענות מודעת נמצאת היכולת לקבל את המציאות</div>
+
+      <div class="topic-text">
+        <p><strong>הקדמה:</strong> בתירגול אנו לומדים לאסוף את התודעה, לשבת עם המציאות כפי שהיא, ולעכב את תגובותינו. שרשראות תגובה אוטומטית שמסתיימות במצבים שאינם מטיבים איתנו יכולות להאט, ואנו יכולים לסגל היענות לסיטואציה.</p>
+      </div>
+
+      <div class="distinction-grid" style="margin-top:22px;">
+        <div class="distinction-card auto">
+          <div class="d-title">תגובתיות אוטומטית</div>
+          <div class="d-text">פעולות אוטומטיות, מחשבתיות או התנהגותיות, שקורות ב"טייס האוטומטי" — איננו נמצאים שם לבחור בהן, ולרוב מסתיימות באופן שאינו משרת אותנו.</div>
+        </div>
+        <div class="distinction-card skillful">
+          <div class="d-title">היענות</div>
+          <div class="d-text">תגובה בה היה לנו מקום לשקול, לבחור, לעכב תגובות אוטומטיות ולבחור בתגובות, מחשבתיות או התנהגותיות שמשרתות אותנו יותר ומובילות לתוצאות מיטיבות בעבורנו.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.2 -->
+  <section id="s3-2">
+    <div class="section-head">
+      <span class="section-num">3.2</span>
+      <h2>מרחב ערנות</h2>
+    </div>
+    <div class="card">
+      <div class="topic-text" style="margin-top:6px;">
+        <p>הכלי שנלמד היום נקרא <strong>מרחב ערנות</strong> — תרגיל קצר שאפשר לעשות כמעט בכל מקום ובכל זמן, שמטרתו לפתוח בדיוק את המרחב הזה: בין מה שקורה לנו, לבין איך שאנחנו בוחרים להגיב.</p>
+      </div>
+
+      <div class="acronym-strip">
+        <span>ע</span><span>ר</span><span>נ</span><span>ו</span><span>ת</span>
+      </div>
+
+      <ol class="steps-list">
+        <li>
+          <span class="snum">ע</span>
+          <div>
+            <div class="stitle">עצור</div>
+            <div class="sdesc">כשאתם במצב מלחיץ, או אפילו בנקודה אקראית ביום — עצרו או הסיטו את הקשב מהמצב אל החוויה הפנימית שלכם. זהו הצעד הראשון ביציאה מהטייס האוטומטי.</div>
+          </div>
+        </li>
+        <li>
+          <span class="snum">ר</span>
+          <div>
+            <div class="stitle">ראה בבהירות</div>
+            <div class="sdesc">שימו לב לתחושות שמתרחשות בגוף. שימו לב גם לרגשות, למצבי רוח ולמחשבות שיש לכם כרגע — פשוט הבחינו בכמה שיותר מהחוויה.</div>
+          </div>
+        </li>
+        <li>
+          <span class="snum">נ</span>
+          <div>
+            <div class="stitle">נשימה</div>
+            <div class="sdesc">אספו את הקשב שלכם והביאו אותו אל תחושת הנשימה.</div>
+          </div>
+        </li>
+        <li>
+          <span class="snum">ו</span>
+          <div>
+            <div class="stitle">והרחבה</div>
+            <div class="sdesc">הרחיבו את המודעות שלכם כדי לכלול שוב את שאר הגוף, המחשבות והרגשות — תוך ניסיון לאחוז בכל זה בעדינות, מתוך קבלה.</div>
+          </div>
+        </li>
+        <li class="final">
+          <span class="snum">ת</span>
+          <div>
+            <div class="stitle">תגובה מיומנת</div>
+            <div class="sdesc">הגיבו במודעות למה שנדרש באמת במצב, ולאיך שתוכלו לטפל בעצמכם בצורה הטובה ביותר. זו ההיענות — הבחירה שנפתחת ברגע שיש מרחב.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3.3 -->
+  <section id="s3-3">
+    <div class="section-head">
+      <span class="section-num">3.3</span>
+      <h2>דף עבודה — מרחב ערנות</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">בחרו מצב מהשבוע האחרון — קטן או גדול. בצד "תגובתיות אוטומטית" תארו מה עלה בכם בפועל: מחשבות, רגשות, דחפים והתנהגות. בצד "היענות מודעת" דמיינו: אילו היה לכם מרחב ערנות באותו רגע, למה הייתם שמים לב בכל שלב, ואיך הייתה נראית התגובה? המילוי נשמר אוטומטית בדפדפן שלכם בלבד.</p>
+        <span class="save-status" id="saveStatus"><span class="dot"></span><span id="saveStatusText">הנתונים שלכם שמורים במכשיר זה</span></span>
+      </div>
+
+      <div id="scenariosWrap"><!-- injected by JS --></div>
+
+      <div class="toolbar">
+        <button class="primary" id="printBtn">הדפסה / שמירה כ-PDF</button>
+        <button id="clearBtn">נקה גיליון</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.4 -->
+  <section id="s3-4">
+    <div class="section-head">
+      <span class="section-num">3.4</span>
+      <h2>גיליון מעקב תרגול יומי</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">כל יום, תעדו את התרגול הפורמלי, את המיינדפולנס בפעילות היומיומית, ואת השימוש במרחב ערנות. המילוי נשמר אוטומטית בדפדפן שלכם בלבד.</p>
+        <span class="save-status" id="saveStatusLog"><span class="dot"></span><span id="saveStatusTextLog">הנתונים שלכם שמורים במכשיר זה</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-day">יום / תאריך</th>
+              <th class="cell-minutes">תרגול פורמלי</th>
+              <th class="cell-mid">פעילות יומיומית</th>
+              <th class="cell-mid">מרחב ערנות / תגובה מיומנת</th>
+              <th class="cell-notes">הערות</th>
+            </tr>
+          </thead>
+          <tbody id="dailyLogBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button class="primary" id="printBtnLog">הדפסה / שמירה כ-PDF</button>
+        <button id="clearBtnLog">נקה גיליון</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    מבוסס על: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;');
+  }
+
+  // ---------- 3.3 worksheet: auto vs skillful, split sub-fields ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session3_scenarios_v2';
+    const SCENARIOS = 2;
+    const wrap = document.getElementById('scenariosWrap');
+    const statusText = document.getElementById('saveStatusText');
+
+    const AUTO_FIELDS = [
+      {key:'thoughts', label:'מחשבות'},
+      {key:'emotions', label:'רגשות'},
+      {key:'urges', label:'דחפים'},
+      {key:'behavior', label:'התנהגות'},
+    ];
+    const SKILLFUL_FIELDS = [
+      {key:'stop', label:'עצרתי — למה שמתי לב?'},
+      {key:'observe', label:'ראיתי בבהירות — במה הבחנתי?'},
+      {key:'breath', label:'נשמתי — למה שמתי לב בנשימה שלי? בהתמקדות בה?'},
+      {key:'expand', label:'הרחבתי — מה עוד קיים כעת: בגוף? בתודעה? בסביבה שלי ובאנשים שסביבי?'},
+      {key:'respond', label:'הגבתי (תגובה מיומנת) — באיזו תגובה בחרתי?'},
+    ];
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusText.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusText.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+      }
+    }
+
+    let data = loadData();
+    const fieldId = (i, field) => 's' + i + '_' + field;
+
+    function subfieldsHtml(i, fields, group){
+      return fields.map(f => {
+        const val = escapeHtml(data['scenario'+i]?.[f.key] || '');
+        return `<div class="subfield">
+          <label for="${fieldId(i,f.key)}">${f.label}</label>
+          <input type="text" id="${fieldId(i,f.key)}" data-group="${group}" placeholder="..." value="${val}">
+        </div>`;
+      }).join('');
+    }
+
+    function build(){
+      wrap.innerHTML = '';
+      for(let i=1; i<=SCENARIOS; i++){
+        const s = data['scenario'+i] || {};
+        const div = document.createElement('div');
+        div.className = 'scenario';
+        div.innerHTML = `
+          <div class="scenario-label">מצב ${i}</div>
+          <div class="situation-row">
+            <label for="${fieldId(i,'situation')}">מה קרה? (המצב / הטריגר)</label>
+            <input type="text" id="${fieldId(i,'situation')}" placeholder="לדוגמה: ויכוח עם בן משפחה" value="${escapeHtml(s.situation||'')}">
+          </div>
+          <div class="two-col">
+            <div class="col-box auto">
+              <div class="col-title">תגובתיות אוטומטית</div>
+              ${subfieldsHtml(i, AUTO_FIELDS, 'auto')}
+            </div>
+            <div class="col-box skillful">
+              <div class="col-title">מרחב ערנות</div>
+              ${subfieldsHtml(i, SKILLFUL_FIELDS, 'skillful')}
+            </div>
+          </div>
+        `;
+        wrap.appendChild(div);
+      }
+    }
+
+    let saveTimeout = null;
+    wrap.addEventListener('input', function(e){
+      const m = e.target.id.match(/^s(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'scenario' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      statusText.textContent = 'שומר...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', function(){
+      if(confirm('לנקות את כל הגיליון? הפעולה לא ניתנת לביטול.')){
+        data = {};
+        saveData(data);
+        build();
+      }
+    });
+
+    document.getElementById('printBtn').addEventListener('click', function(){
+      window.print();
+    });
+
+    build();
+    if(Object.keys(data).length){
+      statusText.textContent = 'נטען מהשמירה האחרונה במכשיר זה';
+    }
+  })();
+
+  // ---------- 3.4 daily practice log ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session3_dailylog_v1';
+    const ROWS = 7;
+    const body = document.getElementById('dailyLogBody');
+    const statusText = document.getElementById('saveStatusTextLog');
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusText.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusText.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+      }
+    }
+
+    let data = loadData();
+    const fieldId = (row, field) => 'r' + row + '_' + field;
+
+    function buildRows(){
+      body.innerHTML = '';
+      for(let i=1; i<=ROWS; i++){
+        const r = data['row'+i] || {};
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="cell-day"><input type="text" id="${fieldId(i,'day')}" placeholder="יום ג׳, 12/3" value="${escapeHtml(r.day||'')}"></td>
+          <td class="cell-minutes">
+            <div class="minutes-row">
+              <input type="number" min="0" id="${fieldId(i,'minutes')}" placeholder="0" value="${escapeHtml(r.minutes||'')}">
+              <span>דקות</span>
+            </div>
+          </td>
+          <td class="cell-mid"><textarea id="${fieldId(i,'activity')}" placeholder="אילו פעילויות?">${escapeHtml(r.activity||'')}</textarea></td>
+          <td class="cell-mid"><textarea id="${fieldId(i,'sober')}" placeholder="כמה פעמים? באילו מצבים?">${escapeHtml(r.sober||'')}</textarea></td>
+          <td class="cell-notes"><textarea id="${fieldId(i,'notes')}" placeholder="תצפיות, הערות...">${escapeHtml(r.notes||'')}</textarea></td>
+        `;
+        body.appendChild(tr);
+      }
+    }
+
+    let saveTimeout = null;
+    body.addEventListener('input', function(e){
+      const m = e.target.id.match(/^r(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'row' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      statusText.textContent = 'שומר...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    document.getElementById('clearBtnLog').addEventListener('click', function(){
+      if(confirm('לנקות את כל הגיליון? הפעולה לא ניתנת לביטול.')){
+        data = {};
+        saveData(data);
+        buildRows();
+      }
+    });
+
+    document.getElementById('printBtnLog').addEventListener('click', function(){
+      window.print();
+    });
+
+    buildRows();
+    if(Object.keys(data).length){
+      statusText.textContent = 'נטען מהשמירה האחרונה במכשיר זה';
+    }
+  })();
+})();
+</script>
+
+</body>
+</html>
