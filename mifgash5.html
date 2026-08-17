@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מפגש 5 — צרכים וערכים | מניעת הישנות מבוססת מיינדפולנס</title>
+<style>
+  :root{
+    --navy: #1E3A52;
+    --navy-deep: #16293b;
+    --sage: #6E8F72;
+    --sage-light: #E7EEE6;
+    --paper: #FAF8F3;
+    --paper-card: #FFFFFF;
+    --ink: #2B2B27;
+    --ink-soft: #57544c;
+    --line: #DCD5C7;
+    --saved: #4C7A52;
+    --warn: #B9694A;
+    --warn-light: #F6E9E3;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", Assistant, Arial, Helvetica, sans-serif;
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+
+  header.masthead{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:36px 0 30px;
+    margin-bottom:36px;
+  }
+  header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
+  .back-link{
+    color:#CFE0D5;
+    font-size:13.5px;
+    text-decoration:none;
+    margin-bottom:6px;
+    width:fit-content;
+  }
+  .back-link:hover{ text-decoration:underline; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#BFD1C6;
+    font-weight:600;
+  }
+  h1.title{
+    margin:2px 0 0;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .subtitle{
+    color:#CFE0D5;
+    font-size:15px;
+    margin-top:4px;
+  }
+
+  section{margin-bottom:40px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:14px;
+    border-bottom:2px solid var(--sage);
+    padding-bottom:8px;
+  }
+  .section-num{
+    font-variant-numeric: tabular-nums;
+    font-weight:700;
+    color:var(--sage);
+    font-size:15px;
+    background:var(--sage-light);
+    padding:3px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+  }
+
+  .subhead{
+    font-size:17px;
+    font-weight:700;
+    color:var(--navy);
+    margin:26px 0 12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .subhead:first-child{margin-top:0;}
+
+  .topic-text p{margin:0 0 14px;}
+  .topic-text p:last-child{margin-bottom:0;}
+
+  .needs-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:16px 0 18px;
+  }
+  @media (max-width:600px){ .needs-grid{grid-template-columns:1fr;} }
+  .need-card{
+    background:var(--sage-light);
+    border:1px solid #C9DBC9;
+    border-radius:8px;
+    padding:12px 14px;
+  }
+  .need-card .n-title{font-weight:700;color:var(--navy);font-size:14.5px;margin-bottom:3px;}
+  .need-card .n-desc{font-size:13.5px;color:var(--ink-soft);}
+
+  .example-block{
+    border-radius:10px;
+    padding:14px 16px;
+    background:#FCFBF8;
+    border:1px solid var(--line);
+    margin-bottom:10px;
+  }
+  .example-block:last-child{margin-bottom:0;}
+  .example-block .ex-label{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    color:#fff;
+    background:var(--navy);
+    padding:1px 9px;
+    border-radius:10px;
+    margin-bottom:8px;
+  }
+  .example-block p{margin:0;font-size:14px;color:var(--ink);}
+
+  .domain-list{
+    columns:2;
+    column-gap:24px;
+    margin:14px 0 18px;
+    padding-inline-start:20px;
+  }
+  @media (max-width:600px){ .domain-list{columns:1;} }
+  .domain-list li{
+    font-size:14px;
+    color:var(--ink);
+    margin-bottom:6px;
+    break-inside:avoid;
+  }
+  .domain-list b{color:var(--navy);}
+
+  .reflect-block{margin-bottom:22px;}
+  .reflect-block:last-child{margin-bottom:0;}
+  .reflect-q{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  .reflect-block textarea{min-height:100px;}
+
+  .log-intro{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:16px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .log-intro .instructions{color:var(--ink-soft);font-size:14.5px;max-width:560px;}
+  .save-status{
+    font-size:13px;
+    color:var(--saved);
+    display:flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .save-status .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--saved);
+    display:inline-block;
+  }
+
+  .log-table-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line);}
+  table.log{
+    width:100%;
+    border-collapse:collapse;
+    min-width:760px;
+    background:var(--paper-card);
+  }
+  table.log thead th{
+    background:var(--navy);
+    color:#fff;
+    font-size:12.5px;
+    font-weight:600;
+    padding:12px 8px;
+    text-align:center;
+    border-left:1px solid rgba(255,255,255,.15);
+  }
+  table.log thead th:last-child{border-left:none;}
+  table.log td{
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+    padding:7px;
+    vertical-align:top;
+  }
+  table.log td:last-child{border-left:none;}
+  table.log tbody tr:nth-child(even){background:#FCFBF8;}
+  .cell-day{width:95px;}
+  .cell-minutes{width:95px;}
+  .cell-mid{width:150px;}
+  .cell-notes{min-width:190px;}
+  .minutes-row{display:flex;align-items:center;gap:5px;}
+  .minutes-row span{font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+  table.log textarea{min-height:44px;}
+
+  input[type="text"], textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:7px 8px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    resize:vertical;
+  }
+  input[type="text"]:focus, textarea:focus{
+    outline:none;
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px var(--sage-light);
+  }
+
+  .toolbar{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:9px 18px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    transition:background .15s ease;
+  }
+  button:hover{background:var(--sage-light);}
+  button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  button.primary:hover{background:var(--navy-deep);}
+
+  footer{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  @media print{
+    header.masthead{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .toolbar, .save-status{display:none !important;}
+    button{display:none !important;}
+    body{padding-bottom:0;}
+  }
+
+  @media (max-width:600px){
+    h1.title{font-size:21px;}
+    .card{padding:16px;}
+    .log-intro{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index.html" class="back-link">‹ חזרה לתוכנית המפגשים</a>
+    <span class="eyebrow">מניעת הישנות מבוססת מיינדפולנס — חוברת משתתף</span>
+    <h1 class="title">צרכים וערכים: התרמיל והמצפן במסע ההחלמה</h1>
+    <span class="subtitle">דפים 5.1–5.4 · הסבר, חקירה אישית, רגעים מאתגרים וגיליון מעקב</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 5.1 -->
+  <section id="s5-1">
+    <div class="section-head">
+      <span class="section-num">5.1</span>
+      <h2>צרכים וערכים</h2>
+    </div>
+    <div class="card">
+
+      <div class="subhead">התרמיל: הצרכים שלנו</div>
+      <div class="topic-text">
+        <p>מעבר לצרכים הפיזיים, יש לנו גם צרכים רגשיים - חלק בלתי נפרד מהתרמיל שאנחנו נושאים איתנו לאורך החיים. המשימה שלנו היא למצוא, שוב ושוב, את הדרך לענות על הצרכים האלה - גם בעזרת עצמנו, וגם בעזרת הסביבה שלנו.</p>
+      </div>
+
+      <div class="needs-grid">
+        <div class="need-card">
+          <div class="n-title">התקשרות לאחרים</div>
+          <div class="n-desc">חיבור, קרבה, תחושת שייכות</div>
+        </div>
+        <div class="need-card">
+          <div class="n-title">עצמאות ואוטונומיה</div>
+          <div class="n-desc">תחושת יכולת לעמוד ברשות עצמי</div>
+        </div>
+        <div class="need-card">
+          <div class="n-title">מסוגלות וערך עצמי</div>
+          <div class="n-desc">תחושת יכולת והערכה עצמית</div>
+        </div>
+        <div class="need-card">
+          <div class="n-title">גבולות ומשמעת</div>
+          <div class="n-desc">מסגרת, ריסון עצמי בריא</div>
+        </div>
+        <div class="need-card">
+          <div class="n-title">ספונטניות ומשחקיות</div>
+          <div class="n-desc">חופש לבטא, להתנסות, ליהנות</div>
+        </div>
+      </div>
+
+      <div class="example-block">
+        <span class="ex-label">דוגמה 1</span>
+        <p>מישהו שעובד ממושכות בלי הפסקה, ומרגיש ריקנות בסופו של יום - אולי הצורך שלא נענה הוא ספונטניות ומשחקיות. לענות עליו לא חייב לבוא מהסביבה - אפשר גם דרך שעה של תחביב, לבד.</p>
+      </div>
+      <div class="example-block">
+        <span class="ex-label">דוגמה 2</span>
+        <p>מישהי שעברה תקופה של בדידות, ומרגישה שקשה לה לבקש עזרה - הצורך בהתקשרות עשוי להישאר לא מסופק עד שהיא יוזמת קשר, ולא מחכה שהוא "יקרה מעצמו".</p>
+      </div>
+
+      <div class="subhead">המצפן: הערכים שלנו</div>
+      <div class="topic-text">
+        <p>ערכים הם מצפן שמלווה אותנו במגוון מרחבי חיים - הם יכולים לעזור לנו להבין איך אנחנו רוצים להתנהג, גם בזמנים טובים וגם בזמנים המאתגרים ביותר.</p>
+      </div>
+
+      <ul class="domain-list">
+        <li><b>משפחה</b> — איזה בן/בת משפחה תרצו להיות?</li>
+        <li><b>זוגיות</b> — איזה שותף.ה תרצו להיות בקשר קרוב?</li>
+        <li><b>הורות</b> — איזה הורה תרצו להיות?</li>
+        <li><b>חברות</b> — מה תרצו להביא לחברויות שלכם?</li>
+        <li><b>קריירה / תעסוקה</b> — מה חשוב לכם בעבודה?</li>
+        <li><b>למידה וצמיחה אישית</b> — מה תרצו ללמוד או לפתח?</li>
+        <li><b>פנאי והנאה</b> — איך תרצו לנוח וליהנות?</li>
+        <li><b>רוחניות</b> — מה חשוב לכם בתחום הזה, בכל צורה שמשמעותית עבורכם?</li>
+        <li><b>קהילה וסביבה</b> — איך תרצו לתרום לסביבה שלכם?</li>
+        <li><b>בריאות</b> — איך תרצו לטפל בגוף שלכם?</li>
+      </ul>
+
+      <div class="example-block">
+        <span class="ex-label">דוגמה 1</span>
+        <p>אם להיות בן משפחה קרוב ונוכח חשוב לי, וההתנהגויות שנובעות מכך הן קשר קבוע או תמיכה ברגעי משבר וחולי - ייתכן שאבחר לתמוך בבן משפחה, גם אם האדם הזה לא תמיד נעים לי, או שיש לו אמירות שפוגעות ברגשות שלי.</p>
+      </div>
+      <div class="example-block">
+        <span class="ex-label">דוגמה 2</span>
+        <p>אם ערך רוחניות חשוב לי, וכחלק ממנו אחת ההתנהגויות הנובעות היא תרגול מדיטציה - אוכל לתרגל שעה ביום כשזמני בידי, אבל גם כשהיום שלי עמוס לעייפה במשימות חשובות, אני עדיין אוכל לממש את הערך הזה ולבחור לעשות 5 דקות, על מנת לממש אותו בנסיבות חיי.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5.2 -->
+  <section id="s5-2">
+    <div class="section-head">
+      <span class="section-num">5.2</span>
+      <h2>חקירה אישית</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">קחו זמן לכתוב בכנות - אין תשובה נכונה. המילוי נשמר אוטומטית בדפדפן שלכם בלבד.</p>
+        <span class="save-status" id="saveStatus52"><span class="dot"></span><span id="saveStatusText52">הנתונים שלכם שמורים במכשיר זה</span></span>
+      </div>
+
+      <div class="subhead">צרכים</div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">אילו צרכים אני מרגיש.ה שאני יותר מיומן.ת בלספק לעצמי - באופן עצמאי, או בעזרת הסביבה שלי?</div>
+        <textarea id="r52_skilled" placeholder="כתבו כאן..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">באילו פחות? באיזה מהם ההתמכרות הגיעה ונתנה מענה שקרי?</div>
+        <textarea id="r52_unmet" placeholder="כתבו כאן..."></textarea>
+      </div>
+
+      <div class="subhead">ערכים</div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">מה הם הערכים שלי, בתחומים שונים? (ראו רשימת התחומים בדף 5.1)</div>
+        <textarea id="r52_values" placeholder="כתבו כאן על התחומים שחשובים לכם..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">באיזה מהם ההתמכרות הרחיקה אותי, וכיצד?</div>
+        <textarea id="r52_pulled" placeholder="כתבו כאן..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">אילו 2 הכי חשובים לי עכשיו, ומה הייתי רוצה לעשות השבוע כדי לנוע בכיוונם?</div>
+        <textarea id="r52_top2" placeholder="כתבו כאן..."></textarea>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn52">נקה גיליון</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.3 -->
+  <section id="s5-3">
+    <div class="section-head">
+      <span class="section-num">5.3</span>
+      <h2>גיליון מעקב — התמודדות עם רגעים מאתגרים</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">לאורך השבוע, כשעולה רגע מאתגר - תעדו אותו כאן: מה קרה, איך השתמשתם במרחב ערנות, ואיזה צורך או ערך היה קשור לרגע הזה. אין צורך למלא כל יום - רק כשיש רגע שראוי לתעד. המילוי נשמר אוטומטית בדפדפן שלכם בלבד.</p>
+        <span class="save-status" id="saveStatus53"><span class="dot"></span><span id="saveStatusText53">הנתונים שלכם שמורים במכשיר זה</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-notes">תיאור הרגע</th>
+              <th class="cell-mid">מרחב ערנות — מה עשיתי?</th>
+              <th class="cell-mid">צורך / ערך רלוונטי</th>
+            </tr>
+          </thead>
+          <tbody id="momentsBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn53">נקה גיליון</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.4 -->
+  <section id="s5-4">
+    <div class="section-head">
+      <span class="section-num">5.4</span>
+      <h2>גיליון מעקב תרגול יומי</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">כל יום, תעדו את התרגול הפורמלי, את המיינדפולנס בפעילות היומיומית, ואת השימוש במרחב ערנות - וכעת גם: איזה צורך או ערך היה רלוונטי, והאם הוא כיוון אתכם לפעולה מיומנת. המילוי נשמר אוטומטית בדפדפן שלכם בלבד.</p>
+        <span class="save-status" id="saveStatus54"><span class="dot"></span><span id="saveStatusText54">הנתונים שלכם שמורים במכשיר זה</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-day">יום / תאריך</th>
+              <th class="cell-minutes">תרגול פורמלי</th>
+              <th class="cell-mid">פעילות יומיומית</th>
+              <th class="cell-mid">מרחב ערנות</th>
+              <th class="cell-notes">צורך / ערך רלוונטי — האם כיוון אותי? לאיזו פעולה מיומנת?</th>
+            </tr>
+          </thead>
+          <tbody id="dailyLogBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button class="primary" id="printBtn">הדפסה / שמירה כ-PDF</button>
+        <button id="clearBtn53">נקה גיליון</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    מבוסס בעקיפין על מפגשים 7–8 (Following Your Values / Exploring Your Needs) מתוך A Clinician's Guide to MBRP — Rolling Admission, ועל מסגרת הצרכים הרגשיים בטיפול סכמה, בעיבוד ובניסוח עצמאי.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;');
+  }
+
+  // ---------- 5.2 personal exploration (free text fields) ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session5_exploration_v1';
+    const statusEl = document.getElementById('saveStatusText52');
+    const fields = ['r52_skilled','r52_unmet','r52_values','r52_pulled','r52_top2'].map(id => document.getElementById(id));
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusEl.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusEl.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+      }
+    }
+
+    let data = loadData();
+    fields.forEach(f => { f.value = data[f.id] || ''; });
+    if(Object.keys(data).length){ statusEl.textContent = 'נטען מהשמירה האחרונה במכשיר זה'; }
+
+    let saveTimeout = null;
+    fields.forEach(f => {
+      f.addEventListener('input', function(){
+        data[f.id] = f.value;
+        statusEl.textContent = 'שומר...';
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(() => saveData(data), 400);
+      });
+    });
+
+    document.getElementById('clearBtn52').addEventListener('click', function(){
+      if(confirm('לנקות את כל התשובות? הפעולה לא ניתנת לביטול.')){
+        data = {};
+        fields.forEach(f => f.value = '');
+        saveData(data);
+      }
+    });
+  })();
+
+  // ---------- 5.3 challenging moments log ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session5_moments_v1';
+    const ROWS = 5;
+    const body = document.getElementById('momentsBody');
+    const statusElActual = document.querySelector('#saveStatus53 span:last-child');
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusElActual.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusElActual.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+      }
+    }
+
+    let data = loadData();
+
+    function buildRows(){
+      body.innerHTML = '';
+      for(let i=1; i<=ROWS; i++){
+        const r = data['row'+i] || {};
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="cell-notes"><textarea id="m${i}_desc" placeholder="מה קרה?">${escapeHtml(r.desc||'')}</textarea></td>
+          <td class="cell-mid"><textarea id="m${i}_sober" placeholder="מה עשיתי?">${escapeHtml(r.sober||'')}</textarea></td>
+          <td class="cell-mid"><textarea id="m${i}_needval" placeholder="צורך / ערך...">${escapeHtml(r.needval||'')}</textarea></td>
+        `;
+        body.appendChild(tr);
+      }
+    }
+
+    let saveTimeout = null;
+    body.addEventListener('input', function(e){
+      const m = e.target.id.match(/^m(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'row' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      statusElActual.textContent = 'שומר...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    document.getElementById('clearBtn53').addEventListener('click', function(){
+      if(confirm('לנקות את כל הגיליון? הפעולה לא ניתנת לביטול.')){
+        data = {};
+        saveData(data);
+        buildRows();
+      }
+    });
+
+    buildRows();
+    if(Object.keys(data).length){
+      statusElActual.textContent = 'נטען מהשמירה האחרונה במכשיר זה';
+    }
+  })();
+
+  // ---------- 5.4 daily practice log ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session5_dailylog_v1';
+    const ROWS = 7;
+    const body = document.getElementById('dailyLogBody');
+    const statusEl = document.getElementById('saveStatusText54');
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusEl.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusEl.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+      }
+    }
+
+    let data = loadData();
+
+    function buildRows(){
+      body.innerHTML = '';
+      for(let i=1; i<=ROWS; i++){
+        const r = data['row'+i] || {};
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="cell-day"><input type="text" id="r${i}_day" placeholder="יום ג׳, 12/3" value="${escapeHtml(r.day||'')}"></td>
+          <td class="cell-minutes">
+            <div class="minutes-row">
+              <input type="number" min="0" id="r${i}_minutes" placeholder="0" value="${escapeHtml(r.minutes||'')}">
+              <span>דקות</span>
+            </div>
+          </td>
+          <td class="cell-mid"><textarea id="r${i}_activity" placeholder="אילו פעילויות?">${escapeHtml(r.activity||'')}</textarea></td>
+          <td class="cell-mid"><textarea id="r${i}_sober" placeholder="כמה פעמים? באילו מצבים?">${escapeHtml(r.sober||'')}</textarea></td>
+          <td class="cell-notes"><textarea id="r${i}_needval" placeholder="צורך/ערך, והאם כיוון לפעולה...">${escapeHtml(r.needval||'')}</textarea></td>
+        `;
+        body.appendChild(tr);
+      }
+    }
+
+    let saveTimeout = null;
+    body.addEventListener('input', function(e){
+      const m = e.target.id.match(/^r(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'row' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      statusEl.textContent = 'שומר...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    document.getElementById('clearBtn53').addEventListener('click', function(){
+      if(confirm('לנקות את כל הגיליון? הפעולה לא ניתנת לביטול.')){
+        data = {};
+        saveData(data);
+        buildRows();
+      }
+    });
+
+    document.getElementById('printBtn').addEventListener('click', function(){
+      window.print();
+    });
+
+    buildRows();
+    if(Object.keys(data).length){
+      statusEl.textContent = 'נטען מהשמירה האחרונה במכשיר זה';
+    }
+  })();
+})();
+</script>
+
+</body>
+</html>
