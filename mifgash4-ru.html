@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Встреча 4 — Осознанность в сложных ситуациях | Профилактика рецидива на основе осознанности</title>
+<style>
+  :root{
+    --navy: #1E3A52;
+    --navy-deep: #16293b;
+    --sage: #6E8F72;
+    --sage-light: #E7EEE6;
+    --paper: #FAF8F3;
+    --paper-card: #FFFFFF;
+    --ink: #2B2B27;
+    --ink-soft: #57544c;
+    --line: #DCD5C7;
+    --saved: #4C7A52;
+    --risk: #B9694A;
+    --risk-light: #F6E9E3;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+
+  header.masthead{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:36px 0 30px;
+    margin-bottom:36px;
+  }
+  header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
+  .back-link{
+    color:#CFE0D5;
+    font-size:13.5px;
+    text-decoration:none;
+    margin-bottom:6px;
+    width:fit-content;
+  }
+  .back-link:hover{ text-decoration:underline; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#BFD1C6;
+    font-weight:600;
+  }
+  h1.title{
+    margin:2px 0 0;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .subtitle{
+    color:#CFE0D5;
+    font-size:15px;
+    margin-top:4px;
+  }
+
+  section{margin-bottom:40px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:14px;
+    border-bottom:2px solid var(--sage);
+    padding-bottom:8px;
+  }
+  .section-num{
+    font-variant-numeric: tabular-nums;
+    font-weight:700;
+    color:var(--sage);
+    font-size:15px;
+    background:var(--sage-light);
+    padding:3px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+  }
+
+  .topic-text p{margin:0 0 14px;}
+  .topic-text p:last-child{margin-bottom:0;}
+
+  .facilitator-note{
+    margin-bottom:20px;
+    border:1px dashed var(--line);
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    background:#FCFBF8;
+  }
+  .facilitator-note strong{ color:var(--navy); }
+
+  .practice-steps{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .practice-steps li{
+    display:grid;
+    grid-template-columns:32px 1fr;
+    gap:12px;
+  }
+  .practice-steps .pnum{
+    width:32px;height:32px;border-radius:8px;
+    background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:14px;flex-shrink:0;
+  }
+  .practice-steps .ptitle{font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .practice-steps .pdesc{color:var(--ink-soft);font-size:14.5px;}
+
+  .log-intro{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:16px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .log-intro .instructions{color:var(--ink-soft);font-size:14.5px;max-width:560px;}
+  .save-status{
+    font-size:13px;
+    color:var(--saved);
+    display:flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .save-status .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--saved);
+    display:inline-block;
+  }
+
+  .log-table-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line);}
+  table.log{
+    width:100%;
+    border-collapse:collapse;
+    min-width:680px;
+    background:var(--paper-card);
+  }
+  table.log thead th{
+    background:var(--navy);
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    padding:12px 8px;
+    text-align:center;
+    border-right:1px solid rgba(255,255,255,.15);
+  }
+  table.log thead th:last-child{border-right:none;}
+  table.log td{
+    border-top:1px solid var(--line);
+    border-right:1px solid var(--line);
+    padding:7px;
+    vertical-align:top;
+  }
+  table.log td:last-child{border-right:none;}
+  table.log tbody tr:nth-child(even){background:#FCFBF8;}
+  .cell-day{width:100px;}
+  .cell-minutes{width:100px;}
+  .cell-mid{width:170px;}
+  .cell-narrow{width:150px;}
+  .cell-notes{min-width:170px;}
+  .cell-yn{width:90px;}
+  .minutes-row{display:flex;align-items:center;gap:5px;}
+  .minutes-row span{font-size:12.5px;color:var(--ink-soft);white-space:nowrap;}
+
+  input[type="text"], textarea, select{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:7px 8px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    resize:vertical;
+  }
+  input[type="text"]:focus, textarea:focus, select:focus{
+    outline:none;
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px var(--sage-light);
+  }
+  table.log textarea{min-height:44px;}
+
+  .risk-pill{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    color:#fff;
+    background:var(--risk);
+    padding:1px 9px;
+    border-radius:10px;
+  }
+
+  .reflect-block{margin-bottom:24px;}
+  .reflect-block:last-child{margin-bottom:0;}
+  .reflect-q{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  .reflect-block textarea{min-height:110px;}
+
+  .toolbar{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:9px 18px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    transition:background .15s ease;
+  }
+  button:hover{background:var(--sage-light);}
+  button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  button.primary:hover{background:var(--navy-deep);}
+
+  footer{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  @media print{
+    header.masthead{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .toolbar, .save-status{display:none !important;}
+    button{display:none !important;}
+    body{padding-bottom:0;}
+  }
+
+  @media (max-width:600px){
+    h1.title{font-size:21px;}
+    .card{padding:16px;}
+    .log-intro{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index-ru.html" class="back-link">‹ Назад к программе встреч</a>
+    <span class="eyebrow">Профилактика рецидива на основе осознанности — Рабочая тетрадь участника</span>
+    <h1 class="title">Встреча 4: Осознанность в сложных ситуациях</h1>
+    <span class="subtitle">Страницы 4.1–4.5 · Тема и практика, картирование рисков, Пространство осознанности на практике, осмысление и лист учёта</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 4.1 -->
+  <section id="s4-1">
+    <div class="section-head">
+      <span class="section-num">4.1</span>
+      <h2>Тема встречи и ежедневная практика</h2>
+    </div>
+    <div class="card">
+      <div class="topic-text">
+        <p><strong>Тема:</strong> Часто самые трудные гости, которых нужно принять в гостевом доме, — это те, кто приходит именно в ситуациях, ранее связанных с нашим употреблением: знакомые люди, места, время или ощущения. Они не всегда приходят по приглашению, и часто они нежеланны. Эта встреча посвящена тому, чтобы оставаться присутствующими, даже когда приходит незваный гость — импульс, воспоминание или ощущение, с которым нам труднее всего сидеть. Мы будем использовать осознанность, чтобы повысить нашу способность переживать тягу и давление к употреблению без автоматической реакции, и вместе картируем наши личные ситуации риска.</p>
+      </div>
+
+      <ol class="practice-steps">
+        <li>
+          <span class="pnum">1</span>
+          <div>
+            <div class="ptitle">Сидячая медитация с дискомфортом</div>
+            <div class="pdesc">Практикуйте каждый день, насколько это возможно. На этот раз намеренно замечайте любой возникающий дискомфорт — физический или ментальный — и дайте ему место, не пытаясь его изменить. Если возникают знакомые трудности (отвращение, тяга, беспокойство, сонливость, сомнение) — это именно тот материал, с которым нужно практиковать.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">2</span>
+          <div>
+            <div class="ptitle">Пространство осознанности</div>
+            <div class="pdesc">Продолжайте практиковать регулярно, и особенно каждый раз, когда замечаете, что входите в сложную ситуацию или ваша реакция становится автоматической.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">3</span>
+          <div>
+            <div class="ptitle">Картирование ситуаций риска</div>
+            <div class="pdesc">Заполните рабочий лист «Мои самые высокие ситуации риска» (страница 4.2) — они станут основой для целенаправленной практики Пространства осознанности, которую мы сделаем на странице 4.3.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4.2 -->
+  <section id="s4-2">
+    <div class="section-head">
+      <span class="section-num">4.2</span>
+      <h2>Рабочий лист — Мои самые высокие ситуации риска</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">Подумайте о людях, местах, чувствах, времени или ситуациях, которые повышают для вас риск употребления. Не нужно заполнять всё сразу — можно возвращаться и дополнять в течение недели. Данные сохраняются автоматически только в вашем браузере.</p>
+        <span class="save-status" id="saveStatus42"><span class="dot"></span><span id="saveStatusText42">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-mid">Ситуация риска</th>
+              <th class="cell-notes">Что делает это опасным для меня? (люди / места / чувства / время)</th>
+              <th class="cell-yn">Уровень риска (1–10)</th>
+            </tr>
+          </thead>
+          <tbody id="riskBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn42">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.3 -->
+  <section id="s4-3">
+    <div class="section-head">
+      <span class="section-num">4.3</span>
+      <h2>Рабочий лист — Пространство осознанности в сложных ситуациях</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">Возьмите ситуации риска, которые вы картировали на странице 4.2. Для каждой отметьте, какие реакции (ощущения, мысли, чувства) могут служить вам сигналом остановиться и воспользоваться Пространством осознанности — и произошло ли это на самом деле в реальной ситуации на этой неделе. Данные сохраняются автоматически только в вашем браузере.</p>
+        <span class="save-status" id="saveStatus43"><span class="dot"></span><span id="saveStatusText43">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-mid">Ситуация риска</th>
+              <th class="cell-notes">Реакции, которые могут быть сигналом остановиться (ощущения / мысли / чувства)</th>
+              <th class="cell-yn">Пространство осознанности?</th>
+              <th class="cell-notes">Как я отреагировал.а</th>
+            </tr>
+          </thead>
+          <tbody id="soberBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn43">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.4 -->
+  <section id="s4-4">
+    <div class="section-head">
+      <span class="section-num">4.4</span>
+      <h2>Осмысление</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">Уделите момент, чтобы понаблюдать и написать. Нет правильного ответа — это место, чтобы остановиться и увидеть, что начинает проясняться для вас. Данные сохраняются автоматически только в вашем браузере.</p>
+        <span class="save-status" id="saveStatus44"><span class="dot"></span><span id="saveStatusText44">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">Что я узнал.а до сих пор о связи между моим внутренним опытом, незваными гостями, автоматическими реакциями и риском рецидива?</div>
+        <textarea id="reflect1" placeholder="Пишите здесь..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">Что я узнал.а о том, чтобы сидеть с дискомфортом, и об умелом отклике?</div>
+        <textarea id="reflect2" placeholder="Пишите здесь..."></textarea>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn44">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4.5 -->
+  <section id="s4-5">
+    <div class="section-head">
+      <span class="section-num">4.5</span>
+      <h2>Лист учёта ежедневной практики</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">Каждый день записывайте формальную практику, осознанность в повседневной деятельности и использование Пространства осознанности. Данные сохраняются автоматически только в вашем браузере.</p>
+        <span class="save-status" id="saveStatus45"><span class="dot"></span><span id="saveStatusText45">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-day">День / дата</th>
+              <th class="cell-minutes">Формальная практика</th>
+              <th class="cell-mid">Повседневная деятельность</th>
+              <th class="cell-mid">Пространство осознанности</th>
+              <th class="cell-notes">Заметки</th>
+            </tr>
+          </thead>
+          <tbody id="dailyLogBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button class="primary" id="printBtn">Печать / сохранить как PDF</button>
+        <button id="clearBtn45">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Основано на: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;');
+  }
+
+  function wireTable(opts){
+    function loadData(){
+      try{ const raw = localStorage.getItem(opts.storageKey); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(opts.storageKey, JSON.stringify(data));
+        opts.statusEl.textContent = 'Сохранено ✓ ' + new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        opts.statusEl.textContent = 'Локальное сохранение недоступно в этом браузере';
+      }
+    }
+    let data = loadData();
+
+    function build(){
+      opts.bodyEl.innerHTML = '';
+      for(let i=1; i<=opts.rows; i++){
+        const r = data['row'+i] || {};
+        const tr = document.createElement('tr');
+        tr.innerHTML = opts.rowHtml(i, r);
+        opts.bodyEl.appendChild(tr);
+      }
+    }
+
+    let saveTimeout = null;
+    opts.bodyEl.addEventListener('input', function(e){
+      const m = e.target.id.match(/^r(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'row' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      opts.statusEl.textContent = 'Сохранение...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    if(opts.clearBtnEl){
+      opts.clearBtnEl.addEventListener('click', function(){
+        if(confirm('Очистить весь лист? Это действие необратимо.')){
+          data = {};
+          saveData(data);
+          build();
+        }
+      });
+    }
+
+    build();
+    if(Object.keys(data).length){
+      opts.statusEl.textContent = 'Загружено из последнего сохранения на этом устройстве';
+    }
+  }
+
+  // 4.2 — risk situations
+  wireTable({
+    storageKey: 'mbrp_session4_risks_ru_v1',
+    rows: 5,
+    bodyEl: document.getElementById('riskBody'),
+    statusEl: document.getElementById('saveStatusText42'),
+    clearBtnEl: document.getElementById('clearBtn42'),
+    rowHtml: (i, r) => `
+      <td class="cell-mid"><input type="text" id="r${i}_situation" placeholder="например: рядом со стрессом на работе" value="${escapeHtml(r.situation||'')}"></td>
+      <td class="cell-notes"><textarea id="r${i}_why">${escapeHtml(r.why||'')}</textarea></td>
+      <td class="cell-yn"><input type="text" id="r${i}_level" placeholder="1–10" value="${escapeHtml(r.level||'')}"></td>
+    `
+  });
+
+  // 4.3 — Пространство осознанности in challenging situations
+  wireTable({
+    storageKey: 'mbrp_session4_sober_ru_v1',
+    rows: 5,
+    bodyEl: document.getElementById('soberBody'),
+    statusEl: document.getElementById('saveStatusText43'),
+    clearBtnEl: document.getElementById('clearBtn43'),
+    rowHtml: (i, r) => `
+      <td class="cell-mid"><input type="text" id="r${i}_situation" placeholder="Ситуация риска" value="${escapeHtml(r.situation||'')}"></td>
+      <td class="cell-notes"><textarea id="r${i}_cues">${escapeHtml(r.cues||'')}</textarea></td>
+      <td class="cell-yn"><input type="text" id="r${i}_took" placeholder="Да / Нет" value="${escapeHtml(r.took||'')}"></td>
+      <td class="cell-notes"><textarea id="r${i}_response">${escapeHtml(r.response||'')}</textarea></td>
+    `
+  });
+
+  // 4.5 — daily practice log
+  wireTable({
+    storageKey: 'mbrp_session4_dailylog_ru_v1',
+    rows: 7,
+    bodyEl: document.getElementById('dailyLogBody'),
+    statusEl: document.getElementById('saveStatusText45'),
+    clearBtnEl: document.getElementById('clearBtn45'),
+    rowHtml: (i, r) => `
+      <td class="cell-day"><input type="text" id="r${i}_day" placeholder="вторник, 12.03" value="${escapeHtml(r.day||'')}"></td>
+      <td class="cell-minutes">
+        <div class="minutes-row">
+          <input type="number" min="0" id="r${i}_minutes" placeholder="0" value="${escapeHtml(r.minutes||'')}">
+          <span>мин.</span>
+        </div>
+      </td>
+      <td class="cell-mid"><textarea id="r${i}_activity" placeholder="Какие занятия?">${escapeHtml(r.activity||'')}</textarea></td>
+      <td class="cell-mid"><textarea id="r${i}_sober" placeholder="Сколько раз? В каких ситуациях?">${escapeHtml(r.sober||'')}</textarea></td>
+      <td class="cell-notes"><textarea id="r${i}_notes" placeholder="Наблюдения, заметки...">${escapeHtml(r.notes||'')}</textarea></td>
+    `
+  });
+
+  // 4.4 — reflection
+  (function(){
+    const STORAGE_KEY = 'mbrp_session4_reflect_ru_v1';
+    const statusEl = document.getElementById('saveStatusText44');
+    const t1 = document.getElementById('reflect1');
+    const t2 = document.getElementById('reflect2');
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusEl.textContent = 'Сохранено ✓ ' + new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusEl.textContent = 'Локальное сохранение недоступно в этом браузере';
+      }
+    }
+
+    let data = loadData();
+    t1.value = data.reflect1 || '';
+    t2.value = data.reflect2 || '';
+    if(Object.keys(data).length){
+      statusEl.textContent = 'Загружено из последнего сохранения на этом устройстве';
+    }
+
+    let saveTimeout = null;
+    function onInput(){
+      data.reflect1 = t1.value;
+      data.reflect2 = t2.value;
+      statusEl.textContent = 'Сохранение...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    }
+    t1.addEventListener('input', onInput);
+    t2.addEventListener('input', onInput);
+
+    document.getElementById('clearBtn44').addEventListener('click', function(){
+      if(confirm('Очистить оба ответа? Это действие необратимо.')){
+        data = {};
+        t1.value = ''; t2.value = '';
+        saveData(data);
+      }
+    });
+  })();
+
+  document.getElementById('printBtn').addEventListener('click', function(){
+    window.print();
+  });
+})();
+</script>
+
+</body>
+</html>

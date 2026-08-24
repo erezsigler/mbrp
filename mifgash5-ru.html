@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Встреча 5 — Потребности и ценности | Профилактика рецидива на основе осознанности</title>
+<style>
+  :root{
+    --navy: #1E3A52;
+    --navy-deep: #16293b;
+    --sage: #6E8F72;
+    --sage-light: #E7EEE6;
+    --paper: #FAF8F3;
+    --paper-card: #FFFFFF;
+    --ink: #2B2B27;
+    --ink-soft: #57544c;
+    --line: #DCD5C7;
+    --saved: #4C7A52;
+    --warn: #B9694A;
+    --warn-light: #F6E9E3;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+
+  header.masthead{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:36px 0 30px;
+    margin-bottom:36px;
+  }
+  header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
+  .back-link{
+    color:#CFE0D5;
+    font-size:13.5px;
+    text-decoration:none;
+    margin-bottom:6px;
+    width:fit-content;
+  }
+  .back-link:hover{ text-decoration:underline; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#BFD1C6;
+    font-weight:600;
+  }
+  h1.title{
+    margin:2px 0 0;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .subtitle{
+    color:#CFE0D5;
+    font-size:15px;
+    margin-top:4px;
+  }
+
+  section{margin-bottom:40px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:14px;
+    border-bottom:2px solid var(--sage);
+    padding-bottom:8px;
+  }
+  .section-num{
+    font-variant-numeric: tabular-nums;
+    font-weight:700;
+    color:var(--sage);
+    font-size:15px;
+    background:var(--sage-light);
+    padding:3px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+  }
+
+  .subhead{
+    font-size:17px;
+    font-weight:700;
+    color:var(--navy);
+    margin:26px 0 12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .subhead:first-child{margin-top:0;}
+
+  .topic-text p{margin:0 0 14px;}
+  .topic-text p:last-child{margin-bottom:0;}
+
+  .needs-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:16px 0 18px;
+  }
+  @media (max-width:600px){ .needs-grid{grid-template-columns:1fr;} }
+  .need-card{
+    background:var(--sage-light);
+    border:1px solid #C9DBC9;
+    border-radius:8px;
+    padding:12px 14px;
+  }
+  .need-card .n-title{font-weight:700;color:var(--navy);font-size:14.5px;margin-bottom:3px;}
+  .need-card .n-desc{font-size:13.5px;color:var(--ink-soft);}
+
+  .example-block{
+    border-radius:10px;
+    padding:14px 16px;
+    background:#FCFBF8;
+    border:1px solid var(--line);
+    margin-bottom:10px;
+  }
+  .example-block:last-child{margin-bottom:0;}
+  .example-block .ex-label{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    color:#fff;
+    background:var(--navy);
+    padding:1px 9px;
+    border-radius:10px;
+    margin-bottom:8px;
+  }
+  .example-block p{margin:0;font-size:14px;color:var(--ink);}
+
+  .domain-list{
+    columns:2;
+    column-gap:24px;
+    margin:14px 0 18px;
+    padding-inline-start:20px;
+  }
+  @media (max-width:600px){ .domain-list{columns:1;} }
+  .domain-list li{
+    font-size:14px;
+    color:var(--ink);
+    margin-bottom:6px;
+    break-inside:avoid;
+  }
+  .domain-list b{color:var(--navy);}
+
+  .reflect-block{margin-bottom:22px;}
+  .reflect-block:last-child{margin-bottom:0;}
+  .reflect-q{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  .reflect-block textarea{min-height:100px;}
+
+  .log-intro{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:16px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .log-intro .instructions{color:var(--ink-soft);font-size:14.5px;max-width:560px;}
+  .save-status{
+    font-size:13px;
+    color:var(--saved);
+    display:flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .save-status .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--saved);
+    display:inline-block;
+  }
+
+  .log-table-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line);}
+  table.log{
+    width:100%;
+    border-collapse:collapse;
+    min-width:760px;
+    background:var(--paper-card);
+  }
+  table.log thead th{
+    background:var(--navy);
+    color:#fff;
+    font-size:12.5px;
+    font-weight:600;
+    padding:12px 8px;
+    text-align:center;
+    border-right:1px solid rgba(255,255,255,.15);
+  }
+  table.log thead th:last-child{border-right:none;}
+  table.log td{
+    border-top:1px solid var(--line);
+    border-right:1px solid var(--line);
+    padding:7px;
+    vertical-align:top;
+  }
+  table.log td:last-child{border-right:none;}
+  table.log tbody tr:nth-child(even){background:#FCFBF8;}
+  .cell-day{width:95px;}
+  .cell-minutes{width:95px;}
+  .cell-mid{width:150px;}
+  .cell-notes{min-width:190px;}
+  .minutes-row{display:flex;align-items:center;gap:5px;}
+  .minutes-row span{font-size:12px;color:var(--ink-soft);white-space:nowrap;}
+  table.log textarea{min-height:44px;}
+
+  input[type="text"], textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:7px 8px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    resize:vertical;
+  }
+  input[type="text"]:focus, textarea:focus{
+    outline:none;
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px var(--sage-light);
+  }
+
+  .toolbar{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:9px 18px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    transition:background .15s ease;
+  }
+  button:hover{background:var(--sage-light);}
+  button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  button.primary:hover{background:var(--navy-deep);}
+
+  footer{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  @media print{
+    header.masthead{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .toolbar, .save-status{display:none !important;}
+    button{display:none !important;}
+    body{padding-bottom:0;}
+  }
+
+  @media (max-width:600px){
+    h1.title{font-size:21px;}
+    .card{padding:16px;}
+    .log-intro{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index-ru.html" class="back-link">‹ Назад к программе встреч</a>
+    <span class="eyebrow">Профилактика рецидива на основе осознанности — Рабочая тетрадь участника</span>
+    <h1 class="title">Потребности и ценности: рюкзак и компас на пути выздоровления</h1>
+    <span class="subtitle">Страницы 5.1–5.4 · Объяснение, личное исследование, трудные моменты и лист учёта</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 5.1 -->
+  <section id="s5-1">
+    <div class="section-head">
+      <span class="section-num">5.1</span>
+      <h2>Потребности и ценности</h2>
+    </div>
+    <div class="card">
+
+      <div class="subhead">Рюкзак: наши потребности</div>
+      <div class="topic-text">
+        <p>Помимо физических потребностей, у нас есть и эмоциональные потребности — неотъемлемая часть рюкзака, который мы несём с собой по жизни. Наша задача — снова и снова находить способ удовлетворять эти потребности, как с помощью себя самих, так и с помощью нашего окружения.</p>
+      </div>
+
+      <div class="needs-grid">
+        <div class="need-card">
+          <div class="n-title">Привязанность к другим</div>
+          <div class="n-desc">Связь, близость, чувство принадлежности</div>
+        </div>
+        <div class="need-card">
+          <div class="n-title">Независимость и автономия</div>
+          <div class="n-desc">Ощущение способности стоять на своих ногах</div>
+        </div>
+        <div class="need-card">
+          <div class="n-title">Компетентность и самооценка</div>
+          <div class="n-desc">Ощущение способности и самоуважения</div>
+        </div>
+        <div class="need-card">
+          <div class="n-title">Границы и самодисциплина</div>
+          <div class="n-desc">Рамки, здоровое самоограничение</div>
+        </div>
+        <div class="need-card">
+          <div class="n-title">Спонтанность и игривость</div>
+          <div class="n-desc">Свобода выражать себя, пробовать новое, получать удовольствие</div>
+        </div>
+      </div>
+
+      <div class="example-block">
+        <span class="ex-label">Пример 1</span>
+        <p>Кто-то, кто долго работает без перерыва и в конце дня чувствует пустоту — возможно, неудовлетворённая потребность здесь — спонтанность и игривость. Ответить на неё не обязательно должно окружение — можно и через час хобби, в одиночестве.</p>
+      </div>
+      <div class="example-block">
+        <span class="ex-label">Пример 2</span>
+        <p>Кто-то, кто пережил период одиночества и чувствует, что ему трудно просить о помощи — потребность в привязанности может оставаться неудовлетворённой, пока он.она сам.а не инициирует контакт, а не ждёт, что это «случится само собой».</p>
+      </div>
+
+      <div class="subhead">Компас: наши ценности</div>
+      <div class="topic-text">
+        <p>Ценности — это компас, который сопровождает нас в разных сферах жизни. Они могут помочь нам понять, как мы хотим себя вести — как в хорошие времена, так и в самые трудные.</p>
+      </div>
+
+      <ul class="domain-list">
+        <li><b>Семья</b> — каким сыном/дочерью вы хотите быть?</li>
+        <li><b>Отношения в паре</b> — каким партнёром вы хотите быть в близких отношениях?</li>
+        <li><b>Родительство</b> — каким родителем вы хотите быть?</li>
+        <li><b>Дружба</b> — что вы хотите привносить в свою дружбу?</li>
+        <li><b>Карьера / работа</b> — что для вас важно в работе?</li>
+        <li><b>Обучение и личностный рост</b> — что вы хотите изучить или развить?</li>
+        <li><b>Отдых и удовольствие</b> — как вы хотите отдыхать и получать удовольствие?</li>
+        <li><b>Духовность</b> — что для вас важно в этой сфере, в любой форме, которая для вас значима?</li>
+        <li><b>Сообщество и окружающая среда</b> — как вы хотите вносить вклад в свою среду?</li>
+        <li><b>Здоровье</b> — как вы хотите заботиться о своём теле?</li>
+      </ul>
+
+      <div class="example-block">
+        <span class="ex-label">Пример 1</span>
+        <p>Если для меня важно быть близким и присутствующим членом семьи, а поведение, вытекающее из этого, — постоянная связь или поддержка в моменты кризиса и болезни, — возможно, я выберу поддержать члена семьи, даже если этот человек не всегда мне приятен или у него есть высказывания, которые ранят мои чувства.</p>
+      </div>
+      <div class="example-block">
+        <span class="ex-label">Пример 2</span>
+        <p>Если для меня важна ценность духовности, и одно из вытекающих из неё действий — практика медитации, — я смогу практиковать час в день, когда у меня есть время. Но даже когда мой день до предела загружен важными задачами, я всё равно смогу реализовать эту ценность и выбрать сделать 5 минут — чтобы воплотить её в обстоятельствах своей жизни.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5.2 -->
+  <section id="s5-2">
+    <div class="section-head">
+      <span class="section-num">5.2</span>
+      <h2>Личное исследование</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">Уделите время, чтобы написать честно — нет правильного ответа. Данные сохраняются автоматически только в вашем браузере.</p>
+        <span class="save-status" id="saveStatus52"><span class="dot"></span><span id="saveStatusText52">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div class="subhead">Потребности</div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">Какие потребности, как мне кажется, я более умело обеспечиваю себе сам.а — самостоятельно или с помощью своего окружения?</div>
+        <textarea id="r52_skilled" placeholder="Пишите здесь..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">Какие меньше? В каком из них зависимость пришла и дала ложный ответ?</div>
+        <textarea id="r52_unmet" placeholder="Пишите здесь..."></textarea>
+      </div>
+
+      <div class="subhead">Ценности</div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">Какие у меня ценности, в разных сферах? (см. список сфер на странице 5.1)</div>
+        <textarea id="r52_values" placeholder="Пишите здесь о сферах, которые для вас важны..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">От какой из них меня отдалила зависимость, и каким образом?</div>
+        <textarea id="r52_pulled" placeholder="Пишите здесь..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">Какие 2 сейчас самые важные для меня, и что бы я хотел.а сделать на этой неделе, чтобы двигаться в их направлении?</div>
+        <textarea id="r52_top2" placeholder="Пишите здесь..."></textarea>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn52">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.3 -->
+  <section id="s5-3">
+    <div class="section-head">
+      <span class="section-num">5.3</span>
+      <h2>Лист учёта — Преодоление трудных моментов</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">В течение недели, когда возникает трудный момент — записывайте его здесь: что произошло, как вы использовали Пространство осознанности, и какая потребность или ценность была связана с этим моментом. Не нужно заполнять каждый день — только когда есть момент, достойный записи. Данные сохраняются автоматически только в вашем браузере.</p>
+        <span class="save-status" id="saveStatus53"><span class="dot"></span><span id="saveStatusText53">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-notes">Описание момента</th>
+              <th class="cell-mid">Пространство осознанности — что я сделал.а?</th>
+              <th class="cell-mid">Соответствующая потребность / ценность</th>
+            </tr>
+          </thead>
+          <tbody id="momentsBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn53">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.4 -->
+  <section id="s5-4">
+    <div class="section-head">
+      <span class="section-num">5.4</span>
+      <h2>Лист учёта ежедневной практики</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">Каждый день записывайте формальную практику, осознанность в повседневной деятельности и использование Пространства осознанности — а теперь также: какая потребность или ценность была актуальна, и направила ли она вас к умелому действию. Данные сохраняются автоматически только в вашем браузере.</p>
+        <span class="save-status" id="saveStatus54"><span class="dot"></span><span id="saveStatusText54">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-day">День / дата</th>
+              <th class="cell-minutes">Формальная практика</th>
+              <th class="cell-mid">Повседневная деятельность</th>
+              <th class="cell-mid">Пространство осознанности</th>
+              <th class="cell-notes">Потребность / ценность — направила ли она меня? К какому умелому действию?</th>
+            </tr>
+          </thead>
+          <tbody id="dailyLogBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button class="primary" id="printBtn">Печать / сохранить как PDF</button>
+        <button id="clearBtn54">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Основано косвенно на встречах 7–8 (Following Your Values / Exploring Your Needs) из A Clinician's Guide to MBRP — Rolling Admission, а также на модели эмоциональных потребностей в схема-терапии, в самостоятельной переработке и формулировке.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;');
+  }
+
+  // ---------- 5.2 personal exploration ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session5_exploration_ru_v1';
+    const statusEl = document.getElementById('saveStatusText52');
+    const fields = ['r52_skilled','r52_unmet','r52_values','r52_pulled','r52_top2'].map(id => document.getElementById(id));
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusEl.textContent = 'Сохранено ✓ ' + new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusEl.textContent = 'Локальное сохранение недоступно в этом браузере';
+      }
+    }
+
+    let data = loadData();
+    fields.forEach(f => { f.value = data[f.id] || ''; });
+    if(Object.keys(data).length){ statusEl.textContent = 'Загружено из последнего сохранения на этом устройстве'; }
+
+    let saveTimeout = null;
+    fields.forEach(f => {
+      f.addEventListener('input', function(){
+        data[f.id] = f.value;
+        statusEl.textContent = 'Сохранение...';
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(() => saveData(data), 400);
+      });
+    });
+
+    document.getElementById('clearBtn52').addEventListener('click', function(){
+      if(confirm('Очистить все ответы? Это действие необратимо.')){
+        data = {};
+        fields.forEach(f => f.value = '');
+        saveData(data);
+      }
+    });
+  })();
+
+  // ---------- 5.3 challenging moments log ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session5_moments_ru_v1';
+    const ROWS = 5;
+    const body = document.getElementById('momentsBody');
+    const statusElActual = document.querySelector('#saveStatus53 span:last-child');
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusElActual.textContent = 'Сохранено ✓ ' + new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusElActual.textContent = 'Локальное сохранение недоступно в этом браузере';
+      }
+    }
+
+    let data = loadData();
+
+    function buildRows(){
+      body.innerHTML = '';
+      for(let i=1; i<=ROWS; i++){
+        const r = data['row'+i] || {};
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="cell-notes"><textarea id="m${i}_desc" placeholder="Что произошло?">${escapeHtml(r.desc||'')}</textarea></td>
+          <td class="cell-mid"><textarea id="m${i}_sober" placeholder="Что я сделал.а?">${escapeHtml(r.sober||'')}</textarea></td>
+          <td class="cell-mid"><textarea id="m${i}_needval" placeholder="Потребность / ценность...">${escapeHtml(r.needval||'')}</textarea></td>
+        `;
+        body.appendChild(tr);
+      }
+    }
+
+    let saveTimeout = null;
+    body.addEventListener('input', function(e){
+      const m = e.target.id.match(/^m(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'row' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      statusElActual.textContent = 'Сохранение...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    document.getElementById('clearBtn53').addEventListener('click', function(){
+      if(confirm('Очистить весь лист? Это действие необратимо.')){
+        data = {};
+        saveData(data);
+        buildRows();
+      }
+    });
+
+    buildRows();
+    if(Object.keys(data).length){
+      statusElActual.textContent = 'Загружено из последнего сохранения на этом устройстве';
+    }
+  })();
+
+  // ---------- 5.4 daily practice log ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session5_dailylog_ru_v1';
+    const ROWS = 7;
+    const body = document.getElementById('dailyLogBody');
+    const statusEl = document.getElementById('saveStatusText54');
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusEl.textContent = 'Сохранено ✓ ' + new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusEl.textContent = 'Локальное сохранение недоступно в этом браузере';
+      }
+    }
+
+    let data = loadData();
+
+    function buildRows(){
+      body.innerHTML = '';
+      for(let i=1; i<=ROWS; i++){
+        const r = data['row'+i] || {};
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="cell-day"><input type="text" id="r${i}_day" placeholder="вторник, 12.03" value="${escapeHtml(r.day||'')}"></td>
+          <td class="cell-minutes">
+            <div class="minutes-row">
+              <input type="number" min="0" id="r${i}_minutes" placeholder="0" value="${escapeHtml(r.minutes||'')}">
+              <span>мин.</span>
+            </div>
+          </td>
+          <td class="cell-mid"><textarea id="r${i}_activity" placeholder="Какие занятия?">${escapeHtml(r.activity||'')}</textarea></td>
+          <td class="cell-mid"><textarea id="r${i}_sober" placeholder="Сколько раз? В каких ситуациях?">${escapeHtml(r.sober||'')}</textarea></td>
+          <td class="cell-notes"><textarea id="r${i}_needval" placeholder="Потребность/ценность, направила ли она к действию...">${escapeHtml(r.needval||'')}</textarea></td>
+        `;
+        body.appendChild(tr);
+      }
+    }
+
+    let saveTimeout = null;
+    body.addEventListener('input', function(e){
+      const m = e.target.id.match(/^r(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'row' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      statusEl.textContent = 'Сохранение...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    document.getElementById('clearBtn54').addEventListener('click', function(){
+      if(confirm('Очистить весь лист? Это действие необратимо.')){
+        data = {};
+        saveData(data);
+        buildRows();
+      }
+    });
+
+    document.getElementById('printBtn').addEventListener('click', function(){
+      window.print();
+    });
+
+    buildRows();
+    if(Object.keys(data).length){
+      statusEl.textContent = 'Загружено из последнего сохранения на этом устройстве';
+    }
+  })();
+})();
+</script>
+
+</body>
+</html>

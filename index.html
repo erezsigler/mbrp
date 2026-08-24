@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" id="htmlRoot">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,7 @@
   header.masthead{
     background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
     color:#fff;
-    padding:36px 0 30px;
+    padding:28px 0 30px;
     margin-bottom:36px;
   }
   header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
@@ -51,6 +51,30 @@
     color:#CFE0D5;
     font-size:15px;
     margin-top:4px;
+  }
+
+  .lang-toggle{
+    display:flex;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .lang-btn{
+    font-family:inherit;
+    font-size:13.5px;
+    font-weight:600;
+    padding:6px 16px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.35);
+    background:rgba(255,255,255,.08);
+    color:#CFE0D5;
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease;
+  }
+  .lang-btn:hover{ background:rgba(255,255,255,.16); }
+  .lang-btn.active{
+    background:#fff;
+    color:var(--navy);
+    border-color:#fff;
   }
 
   .card{
@@ -117,6 +141,7 @@
     font-size:18px;
     justify-self:center;
   }
+  html[dir="ltr"] .arrow{ transform:scaleX(-1); }
 
   footer{
     text-align:center;
@@ -126,6 +151,8 @@
     padding-top:18px;
     border-top:1px solid var(--line);
   }
+
+  #content-ru{ display:none; }
 
   @media (max-width:600px){
     h1.title{font-size:21px;}
@@ -138,104 +165,266 @@
 
 <header class="masthead">
   <div class="wrap">
-    <span class="eyebrow">מניעת הישנות מבוססת מיינדפולנס — חוברת משתתף</span>
-    <h1 class="title">תוכנית המפגשים</h1>
-    <span class="subtitle">לחצו על מפגש כדי לפתוח את התוכן והתרגול השבועי שלו</span>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btnHe" type="button">עברית</button>
+      <button class="lang-btn" id="btnRu" type="button">Русский</button>
+    </div>
+
+    <div id="head-he">
+      <span class="eyebrow">מניעת הישנות מבוססת מיינדפולנס — חוברת משתתף</span>
+      <h1 class="title">תוכנית המפגשים</h1>
+      <span class="subtitle">לחצו על מפגש כדי לפתוח את התוכן והתרגול השבועי שלו</span>
+    </div>
+    <div id="head-ru" style="display:none;">
+      <span class="eyebrow">Профилактика рецидива на основе осознанности — Рабочая тетрадь участника</span>
+      <h1 class="title">Программа встреч</h1>
+      <span class="subtitle">Нажмите на встречу, чтобы открыть её содержание и еженедельную практику</span>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
-  <div class="card">
-    <ol class="session-list">
-      <li>
-        <a class="session-link" href="mifgash1.html">
-          <span class="num">1</span>
-          <span>
-            <div class="s-title">טייס אוטומטי ומודעות קשובה</div>
-            <div class="s-desc">נדון ב"טייס האוטומטי" — הנטייה של התודעה שלנו לפעול מתוך הרגל, ללא מודעות, באופן כללי אך גם בהקשר של התמכרות. נלמד את תרגיל סריקת הגוף, בו אנו מביאים את תשומת הלב לגופינו באופן מכוון ושיטתי.</div>
-          </span>
-          <span class="arrow">‹</span>
-        </a>
-      </li>
-      <li>
-        <a class="session-link" href="mifgash2.html">
-          <span class="num">2</span>
-          <span>
-            <div class="s-title">גישה חדשה לאי-נוחות</div>
-            <div class="s-desc">נלמד לזהות טריגרים ולחוות תשוקות ודחפים מבלי להגיב אוטומטית, ולהרחיב את יכולתנו לבחור כיצד להגיב.</div>
-          </span>
-          <span class="arrow">‹</span>
-        </a>
-      </li>
-      <li>
-        <a class="session-link" href="mifgash3.html">
-          <span class="num">3</span>
-          <span>
-            <div class="s-title">מתגובתיות אימפולסיבית להיענות מודעת</div>
-            <div class="s-desc">נלמד להבחין בין תגובתיות אוטומטית להיענות מודעת, ונכיר את מרחב הערנות — כלי מעשי לפתוח את המרחב שביניהן.</div>
-          </span>
-          <span class="arrow">‹</span>
-        </a>
-      </li>
-      <li>
-      <li>
-        <a class="session-link" href="mifgash4.html">
-          <span class="num">4</span>
-          <span>
-            <div class="s-title">מיינדפולנס במצבים מאתגרים</div>
-            <div class="s-desc">נזהה מצבי סיכון אישיים לשימוש, ונתמקד ביכולת להיות בנוכחות במצבים שבעבר היו קשורים לשימוש, והגברת המסוגלות להימנע מתגובות אוטומטיות.</div>
-          </span>
-          <span class="arrow">‹</span>
-        </a>
-      </li>
-      <li>
-      <li>
-        <a class="session-link" href="mifgash5.html">
-          <span class="num">5</span>
-          <span>
-            <div class="s-title">צרכים וערכים: התרמיל והמצפן במסע ההחלמה</div>
-            <div class="s-desc">נכיר את הצרכים הרגשיים שלנו ואת הערכים שמנחים אותנו, כמצפן לתגובה מיומנת ולמרחב ערנות.</div>
-          </span>
-          <span class="arrow">‹</span>
-        </a>
-      </li>
-      <li>
-        <div class="session-disabled">
-          <span class="num">6</span>
-          <span>
-            <div class="s-title">לראות מחשבות כמחשבות <span class="badge-soon">בקרוב</span></div>
-            <div class="s-desc">נעמיק במודעות לחשיבה, ונבחן את תפקיד המחשבות במחזורי הישנות.</div>
-          </span>
-          <span></span>
-        </div>
-      </li>
-      <li>
-        <div class="session-disabled">
-          <span class="num">7</span>
-          <span>
-            <div class="s-title">תמיכה וחיזוק הרווחה <span class="badge-soon">בקרוב</span></div>
-            <div class="s-desc">סימני אזהרה אישיים להישנות, איזון, חמלה עצמית, ופעילויות מזינות.</div>
-          </span>
-          <span></span>
-        </div>
-      </li>
-      <li>
-        <div class="session-disabled">
-          <span class="num">8</span>
-          <span>
-            <div class="s-title">תמיכה חברתית ותרגול מתמשך <span class="badge-soon">בקרוב</span></div>
-            <div class="s-desc">סקירת הכישורים שנלמדו, חשיבות רשת התמיכה, ותכניות אישיות להמשך.</div>
-          </span>
-          <span></span>
-        </div>
-      </li>
-    </ol>
+
+  <!-- ========== HEBREW CONTENT ========== -->
+  <div id="content-he">
+    <div class="card">
+      <ol class="session-list">
+        <li>
+          <a class="session-link" href="mifgash1.html">
+            <span class="num">1</span>
+            <span>
+              <div class="s-title">טייס אוטומטי ומודעות קשובה</div>
+              <div class="s-desc">נדון ב"טייס האוטומטי" — הנטייה של התודעה שלנו לפעול מתוך הרגל, ללא מודעות, באופן כללי אך גם בהקשר של התמכרות. נלמד את תרגיל סריקת הגוף, בו אנו מביאים את תשומת הלב לגופינו באופן מכוון ושיטתי.</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <a class="session-link" href="mifgash2.html">
+            <span class="num">2</span>
+            <span>
+              <div class="s-title">גישה חדשה לאי-נוחות</div>
+              <div class="s-desc">נלמד לזהות טריגרים ולחוות תשוקות ודחפים מבלי להגיב אוטומטית, ולהרחיב את יכולתנו לבחור כיצד להגיב.</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <a class="session-link" href="mifgash3.html">
+            <span class="num">3</span>
+            <span>
+              <div class="s-title">מתגובתיות אימפולסיבית להיענות מודעת</div>
+              <div class="s-desc">נלמד להבחין בין תגובתיות אוטומטית להיענות מודעת, ונכיר את מרחב הערנות — כלי מעשי לפתוח את המרחב שביניהן.</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <a class="session-link" href="mifgash4.html">
+            <span class="num">4</span>
+            <span>
+              <div class="s-title">מיינדפולנס במצבים מאתגרים</div>
+              <div class="s-desc">נזהה מצבי סיכון אישיים לשימוש, ונתמקד ביכולת להיות בנוכחות במצבים שבעבר היו קשורים לשימוש, והגברת המסוגלות להימנע מתגובות אוטומטיות.</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <a class="session-link" href="mifgash5.html">
+            <span class="num">5</span>
+            <span>
+              <div class="s-title">צרכים וערכים: התרמיל והמצפן במסע ההחלמה</div>
+              <div class="s-desc">נכיר את הצרכים הרגשיים שלנו ואת הערכים שמנחים אותנו, כמצפן לתגובה מיומנת ולמרחב ערנות.</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <div class="session-disabled">
+            <span class="num">6</span>
+            <span>
+              <div class="s-title">לראות מחשבות כמחשבות <span class="badge-soon">בקרוב</span></div>
+              <div class="s-desc">נעמיק במודעות לחשיבה, ונבחן את תפקיד המחשבות במחזורי הישנות.</div>
+            </span>
+            <span></span>
+          </div>
+        </li>
+        <li>
+          <div class="session-disabled">
+            <span class="num">7</span>
+            <span>
+              <div class="s-title">תמיכה וחיזוק הרווחה <span class="badge-soon">בקרוב</span></div>
+              <div class="s-desc">סימני אזהרה אישיים להישנות, איזון, חמלה עצמית, ופעילויות מזינות.</div>
+            </span>
+            <span></span>
+          </div>
+        </li>
+        <li>
+          <div class="session-disabled">
+            <span class="num">8</span>
+            <span>
+              <div class="s-title">תמיכה חברתית ותרגול מתמשך <span class="badge-soon">בקרוב</span></div>
+              <div class="s-desc">סקירת הכישורים שנלמדו, חשיבות רשת התמיכה, ותכניות אישיות להמשך.</div>
+            </span>
+            <span></span>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <a class="session-link" href="sium-machzor1.html">
+        <span class="num">🌿</span>
+        <span>
+          <div class="s-title">צידה לדרך ההחלמה</div>
+          <div class="s-desc">חברות בדרך, פעילויות נעימות, כרטיס תזכורת, ותכנון אישי להמשך התרגול.</div>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <a class="session-link" href="meshov-mishtatef.html">
+        <span class="num">💬</span>
+        <span>
+          <div class="s-title">משוב משתתף</div>
+          <div class="s-desc">התבוננות על הקורס - כמה שאלות לסיום, כדי לעזור לנו להמשיך לשפר את התוכנית.</div>
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+    </div>
+
+    <footer>
+      מבוסס על: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
+    </footer>
   </div>
 
-  <footer>
-    מבוסס על: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
-  </footer>
+  <!-- ========== RUSSIAN CONTENT ========== -->
+  <div id="content-ru">
+    <div class="card">
+      <ol class="session-list">
+        <li>
+          <a class="session-link" href="mifgash1-ru.html">
+            <span class="num">1</span>
+            <span>
+              <div class="s-title">Автопилот и осознанное внимание</div>
+              <div class="s-desc">Мы поговорим об «автопилоте» — склонности нашего сознания действовать по привычке, без осознанности, в целом, а также в контексте зависимости. Мы изучим упражнение сканирования тела, в котором намеренно и систематически направляем внимание на своё тело.</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <a class="session-link" href="mifgash2-ru.html">
+            <span class="num">2</span>
+            <span>
+              <div class="s-title">Новый подход к дискомфорту</div>
+              <div class="s-desc">Мы научимся распознавать триггеры и переживать тягу и импульсы, не реагируя автоматически, и расширим свою способность выбирать, как реагировать.</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <a class="session-link" href="mifgash3-ru.html">
+            <span class="num">3</span>
+            <span>
+              <div class="s-title">От импульсивной реактивности к осознанному отклику</div>
+              <div class="s-desc">Мы научимся различать автоматическую реактивность и осознанный отклик, и познакомимся с «Пространством осознанности» — практическим инструментом для открытия пространства между ними.</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <a class="session-link" href="mifgash4-ru.html">
+            <span class="num">4</span>
+            <span>
+              <div class="s-title">Осознанность в сложных ситуациях</div>
+              <div class="s-desc">Мы определим личные ситуации риска употребления и сосредоточимся на способности сохранять присутствие в ситуациях, ранее связанных с употреблением, а также на укреплении способности избегать автоматических реакций.</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <a class="session-link" href="mifgash5-ru.html">
+            <span class="num">5</span>
+            <span>
+              <div class="s-title">Потребности и ценности: рюкзак и компас на пути выздоровления</div>
+              <div class="s-desc">Мы познакомимся с нашими эмоциональными потребностями и ценностями, которые направляют нас — как компас для умелого отклика и «Пространства осознанности».</div>
+            </span>
+            <span class="arrow">‹</span>
+          </a>
+        </li>
+        <li>
+          <div class="session-disabled">
+            <span class="num">6</span>
+            <span>
+              <div class="s-title">Видеть мысли просто мыслями <span class="badge-soon">скоро</span></div>
+              <div class="s-desc">Мы углубим осознанность мышления и рассмотрим роль мыслей в циклах рецидива.</div>
+            </span>
+            <span></span>
+          </div>
+        </li>
+        <li>
+          <div class="session-disabled">
+            <span class="num">7</span>
+            <span>
+              <div class="s-title">Поддержка и укрепление благополучия <span class="badge-soon">скоро</span></div>
+              <div class="s-desc">Личные предупреждающие признаки рецидива, баланс, сострадание к себе и питающие активности.</div>
+            </span>
+            <span></span>
+          </div>
+        </li>
+        <li>
+          <div class="session-disabled">
+            <span class="num">8</span>
+            <span>
+              <div class="s-title">Социальная поддержка и продолжение практики <span class="badge-soon">скоро</span></div>
+              <div class="s-desc">Обзор освоенных навыков, важность сети поддержки и личные планы на будущее.</div>
+            </span>
+            <span></span>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <footer>
+      Основано на: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
+    </footer>
+  </div>
+
 </div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'mbrp_index_lang';
+  const htmlRoot = document.getElementById('htmlRoot');
+  const btnHe = document.getElementById('btnHe');
+  const btnRu = document.getElementById('btnRu');
+  const headHe = document.getElementById('head-he');
+  const headRu = document.getElementById('head-ru');
+  const contentHe = document.getElementById('content-he');
+  const contentRu = document.getElementById('content-ru');
+
+  function setLang(lang){
+    const isRu = lang === 'ru';
+    htmlRoot.setAttribute('dir', isRu ? 'ltr' : 'rtl');
+    htmlRoot.setAttribute('lang', isRu ? 'ru' : 'he');
+    headHe.style.display = isRu ? 'none' : 'block';
+    headRu.style.display = isRu ? 'block' : 'none';
+    contentHe.style.display = isRu ? 'none' : 'block';
+    contentRu.style.display = isRu ? 'block' : 'none';
+    btnHe.classList.toggle('active', !isRu);
+    btnRu.classList.toggle('active', isRu);
+    try{ localStorage.setItem(STORAGE_KEY, lang); }catch(e){}
+  }
+
+  btnHe.addEventListener('click', function(){ setLang('he'); });
+  btnRu.addEventListener('click', function(){ setLang('ru'); });
+
+  let saved = null;
+  try{ saved = localStorage.getItem(STORAGE_KEY); }catch(e){}
+  if(saved === 'ru' || saved === 'he'){ setLang(saved); }
+})();
+</script>
 
 </body>
 </html>

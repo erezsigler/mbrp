@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>משוב משתתף | מניעת הישנות מבוססת מיינדפולנס</title>
+<style>
+  :root{
+    --navy: #1E3A52;
+    --navy-deep: #16293b;
+    --sage: #6E8F72;
+    --sage-light: #E7EEE6;
+    --paper: #FAF8F3;
+    --paper-card: #FFFFFF;
+    --ink: #2B2B27;
+    --ink-soft: #57544c;
+    --line: #DCD5C7;
+    --saved: #4C7A52;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", Assistant, Arial, Helvetica, sans-serif;
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px;}
+
+  header.masthead{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:36px 0 30px;
+    margin-bottom:36px;
+  }
+  header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
+  .back-link{
+    color:#CFE0D5;
+    font-size:13.5px;
+    text-decoration:none;
+    margin-bottom:6px;
+    width:fit-content;
+  }
+  .back-link:hover{ text-decoration:underline; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#BFD1C6;
+    font-weight:600;
+  }
+  h1.title{
+    margin:2px 0 0;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .subtitle{
+    color:#CFE0D5;
+    font-size:15px;
+    margin-top:4px;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+    margin-bottom:24px;
+  }
+
+  .intro-text{color:var(--ink-soft);font-size:14.5px;margin-bottom:0;}
+
+  .q-block{margin-bottom:26px;}
+  .q-block:last-child{margin-bottom:0;}
+  .q-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--sage-light);
+    color:var(--navy);
+    font-weight:700;
+    font-size:13px;
+    margin-inline-end:8px;
+  }
+  .q-text{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15.5px;
+    margin-bottom:10px;
+    display:flex;
+    align-items:flex-start;
+  }
+  .q-text span.qt{flex:1;}
+
+  textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:9px 10px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    resize:vertical;
+    min-height:90px;
+  }
+  textarea:focus{
+    outline:none;
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px var(--sage-light);
+  }
+
+  .scale-row{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    margin-bottom:8px;
+  }
+  .scale-btn{
+    width:38px;height:38px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    font-weight:600;
+    font-size:14px;
+    cursor:pointer;
+    transition:background .12s ease, color .12s ease, border-color .12s ease;
+  }
+  .scale-btn:hover{border-color:var(--sage);}
+  .scale-btn.selected{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:#fff;
+  }
+  .scale-labels{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--ink-soft);
+    max-width:420px;
+  }
+  .scale-why{margin-top:10px;}
+  .scale-why label{
+    display:block;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:5px;
+  }
+
+  .save-status{
+    font-size:13px;
+    color:var(--saved);
+    display:flex;align-items:center;gap:6px;
+    margin-bottom:18px;
+  }
+  .save-status .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--saved);
+    display:inline-block;
+  }
+
+  .send-card{
+    background:var(--sage-light);
+    border:1px solid #C9DBC9;
+  }
+  .send-card p{margin:0 0 14px;font-size:14.5px;color:var(--ink);}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;}
+  button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:10px 20px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    transition:background .15s ease;
+  }
+  button:hover{background:#fff;filter:brightness(0.97);}
+  button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  button.primary:hover{background:var(--navy-deep);}
+  .copy-feedback{
+    font-size:13px;
+    color:var(--saved);
+    margin-top:10px;
+    min-height:18px;
+  }
+
+  #previewBox{
+    white-space:pre-wrap;
+    font-size:13.5px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px;
+    margin-top:14px;
+    color:var(--ink-soft);
+    display:none;
+  }
+
+  footer{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width:600px){
+    h1.title{font-size:21px;}
+    .card{padding:16px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index.html" class="back-link">‹ חזרה לתוכנית המפגשים</a>
+    <span class="eyebrow">מניעת הישנות מבוססת מיינדפולנס — חוברת משתתף</span>
+    <h1 class="title">משוב משתתף</h1>
+    <span class="subtitle">התבוננות על הקורס — אנא קחו רגע להתבונן על השאלות הבאות וכתבו את תגובותיכם</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="card">
+    <span class="save-status" id="saveStatus"><span class="dot"></span><span id="saveStatusText">התשובות שלכם שמורות במכשיר זה, עד שתשלחו אותן</span></span>
+
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">1</span><span class="qt">מה מצאתם בעל ערך ביותר בקורס זה? מה למדתם, אם בכלל?</span></div>
+      <textarea id="q1" placeholder="כתבו כאן..."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">2</span><span class="qt">מה, אם בכלל, השתנה עבורכם במהלך הקורס כתוצאה מהשתתפותכם?</span></div>
+      <textarea id="q2" placeholder="כתבו כאן..."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">3</span><span class="qt">האם היה משהו שעמד בדרך הלמידה או הצמיחה שלכם, או שיכול היה לשפר את הקורס עבורכם?</span></div>
+      <textarea id="q3" placeholder="כתבו כאן..."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">4</span><span class="qt">הערות נוספות?</span></div>
+      <textarea id="q4" placeholder="כתבו כאן..."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">5</span><span class="qt">בסולם של 1 (כלל לא) עד 10 (מאוד), עד כמה תוכנית זו הייתה חשובה עבורכם?</span></div>
+      <div class="scale-row" data-scale="q5"></div>
+      <div class="scale-labels"><span>כלל לא</span><span>מאוד</span></div>
+      <div class="scale-why">
+        <label for="q5why">הסבירו מדוע נתתם את הדירוג הזה:</label>
+        <textarea id="q5why" style="min-height:60px;" placeholder="כתבו כאן..."></textarea>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">6</span><span class="qt">בסולם של 1 עד 10, עד כמה סביר שתמשיכו בתרגול מיינדפולנס רשמי (כגון: סריקת גוף, מדיטציית ישיבה, תנועה מיינדפולית) לאחר הקורס?</span></div>
+      <div class="scale-row" data-scale="q6"></div>
+      <div class="scale-labels"><span>כלל לא</span><span>מאוד</span></div>
+      <div class="scale-why">
+        <label for="q6practices">אילו תרגולים?</label>
+        <textarea id="q6practices" style="min-height:60px;" placeholder="כתבו כאן..."></textarea>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">7</span><span class="qt">בסולם של 1 עד 10, עד כמה סביר שתמשיכו בתרגול מיינדפולנס לא-רשמי (כגון: מרחב ערנות, אכילה מיינדפולית, הליכה, פעילויות יומיות) לאחר הקורס?</span></div>
+      <div class="scale-row" data-scale="q7"></div>
+      <div class="scale-labels"><span>כלל לא</span><span>מאוד</span></div>
+      <div class="scale-why">
+        <label for="q7practices">אילו תרגולים?</label>
+        <textarea id="q7practices" style="min-height:60px;" placeholder="כתבו כאן..."></textarea>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-text"><span class="q-num">8</span><span class="qt">עד כמה היית מעוניין.ת להמשיך במפגשים לצורך תמיכה בתרגול שלך?</span></div>
+      <div class="scale-row" data-scale="q8"></div>
+      <div class="scale-labels"><span>כלל לא</span><span>מאוד</span></div>
+      <div class="scale-why">
+        <label for="q8why">מה יגביר את הרצון שלך, ומה עלול לעצור אותך?</label>
+        <textarea id="q8why" style="min-height:70px;" placeholder="כתבו כאן..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card send-card">
+    <p><strong>סיימתם? </strong>לחצו על הכפתור כדי לשלוח את התשובות שלכם. השליחה אוטומטית - אין צורך להעתיק או לשלוח בעצמכם.</p>
+    <div class="toolbar">
+      <button class="primary" id="sendBtn">שליחת המשוב</button>
+    </div>
+    <div class="copy-feedback" id="sendFeedback"></div>
+  </div>
+
+  <footer>
+    מבוסס על: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'mbrp_reflections_v1';
+  const statusText = document.getElementById('saveStatusText');
+  const textFields = ['q1','q2','q3','q4','q5why','q6practices','q7practices','q8why'].map(id => document.getElementById(id));
+  const scaleGroups = ['q5','q6','q7','q8'];
+  const scaleValues = {};
+
+  function loadData(){
+    try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+    catch(e){ return {}; }
+  }
+  function saveData(data){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      statusText.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+    }catch(e){
+      statusText.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+    }
+  }
+
+  let data = loadData();
+  textFields.forEach(f => { f.value = data[f.id] || ''; });
+  scaleGroups.forEach(g => { scaleValues[g] = data[g] || null; });
+  if(Object.keys(data).length){ statusText.textContent = 'נטען מהשמירה האחרונה במכשיר זה'; }
+
+  let saveTimeout = null;
+  function scheduleSave(){
+    statusText.textContent = 'שומר...';
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
+      const out = {};
+      textFields.forEach(f => out[f.id] = f.value);
+      scaleGroups.forEach(g => out[g] = scaleValues[g]);
+      saveData(out);
+    }, 400);
+  }
+
+  textFields.forEach(f => f.addEventListener('input', scheduleSave));
+
+  // build scale buttons
+  document.querySelectorAll('.scale-row').forEach(row => {
+    const group = row.getAttribute('data-scale');
+    for(let n=1; n<=10; n++){
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'scale-btn';
+      btn.textContent = n;
+      if(scaleValues[group] == n) btn.classList.add('selected');
+      btn.addEventListener('click', function(){
+        scaleValues[group] = n;
+        row.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        scheduleSave();
+      });
+      row.appendChild(btn);
+    }
+  });
+
+  // ==== CONFIGURATION ====
+  // Paste the Google Apps Script Web App URL here after deploying it (see setup instructions).
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw8FBB_22YSwwQo-sHWzN0u9HGc4N9SUmxVE4JxIblJeVbxpZAFfjXB3yztseeGeQs/exec';
+
+  function buildPayload(){
+    return {
+      q1: document.getElementById('q1').value || '',
+      q2: document.getElementById('q2').value || '',
+      q3: document.getElementById('q3').value || '',
+      q4: document.getElementById('q4').value || '',
+      q5: scaleValues.q5 || '',
+      q5why: document.getElementById('q5why').value || '',
+      q6: scaleValues.q6 || '',
+      q6practices: document.getElementById('q6practices').value || '',
+      q7: scaleValues.q7 || '',
+      q7practices: document.getElementById('q7practices').value || '',
+      q8: scaleValues.q8 || '',
+      q8why: document.getElementById('q8why').value || ''
+    };
+  }
+
+  document.getElementById('sendBtn').addEventListener('click', async function(){
+    const feedback = document.getElementById('sendFeedback');
+    const btn = this;
+
+    if(SCRIPT_URL.indexOf('PASTE_YOUR') === 0){
+      feedback.textContent = 'טרם הוגדרה כתובת השליחה - יש להשלים את הקמת גיליון גוגל (ראו הוראות).';
+      return;
+    }
+
+    btn.disabled = true;
+    feedback.textContent = 'שולח...';
+
+    try{
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(buildPayload())
+      });
+      feedback.textContent = 'תודה, המשוב נשלח ✓';
+      try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+    }catch(e){
+      feedback.textContent = 'משהו השתבש בשליחה. בדקו את החיבור לאינטרנט ונסו שוב.';
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

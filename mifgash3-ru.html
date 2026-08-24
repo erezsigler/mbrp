@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Встреча 3 — От импульсивной реактивности к осознанному отклику | Профилактика рецидива на основе осознанности</title>
+<style>
+  :root{
+    --navy: #1E3A52;
+    --navy-deep: #16293b;
+    --sage: #6E8F72;
+    --sage-light: #E7EEE6;
+    --paper: #FAF8F3;
+    --paper-card: #FFFFFF;
+    --ink: #2B2B27;
+    --ink-soft: #57544c;
+    --line: #DCD5C7;
+    --saved: #4C7A52;
+    --auto: #B9694A;
+    --auto-light: #F6E9E3;
+    --skillful: #4C7A52;
+    --skillful-light: #E7EEE6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+
+  header.masthead{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:36px 0 30px;
+    margin-bottom:36px;
+  }
+  header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
+  .back-link{
+    color:#CFE0D5;
+    font-size:13.5px;
+    text-decoration:none;
+    margin-bottom:6px;
+    width:fit-content;
+  }
+  .back-link:hover{ text-decoration:underline; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#BFD1C6;
+    font-weight:600;
+  }
+  h1.title{
+    margin:2px 0 0;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .subtitle{
+    color:#CFE0D5;
+    font-size:15px;
+    margin-top:4px;
+  }
+
+  section{margin-bottom:40px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:14px;
+    border-bottom:2px solid var(--sage);
+    padding-bottom:8px;
+  }
+  .section-num{
+    font-variant-numeric: tabular-nums;
+    font-weight:700;
+    color:var(--sage);
+    font-size:15px;
+    background:var(--sage-light);
+    padding:3px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+  }
+
+  .topic-text p{margin:0 0 14px;}
+  .topic-text p:last-child{margin-bottom:0;}
+
+  .theme-line{
+    font-size:17px;
+    font-weight:700;
+    color:var(--navy);
+    text-align:center;
+    padding:6px 10px 20px;
+    line-height:1.5;
+  }
+
+  blockquote.quote{
+    margin:18px 0;
+    padding:16px 20px;
+    border-inline-start:4px solid var(--sage);
+    background:var(--sage-light);
+    border-radius:6px;
+    font-style:italic;
+    color:var(--navy);
+    font-size:15.5px;
+  }
+  blockquote.quote cite{
+    display:block;
+    margin-top:8px;
+    font-style:normal;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  .distinction-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:20px 0;
+  }
+  .distinction-card{
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .distinction-card.auto{ background:var(--auto-light); border:1px solid #E3C3B2; }
+  .distinction-card.skillful{ background:var(--skillful-light); border:1px solid #C9DBC9; }
+  .distinction-card .d-title{
+    font-weight:700;
+    font-size:15.5px;
+    margin-bottom:6px;
+  }
+  .distinction-card.auto .d-title{ color:var(--auto); }
+  .distinction-card.skillful .d-title{ color:var(--skillful); }
+  .distinction-card .d-text{ font-size:14px; color:var(--ink); }
+
+  @media (max-width:600px){
+    .distinction-grid{ grid-template-columns:1fr; }
+  }
+
+  .steps-list{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .steps-list li{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:14px;
+  }
+  .steps-list .snum{
+    width:44px;height:44px;border-radius:10px;
+    background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:17px;flex-shrink:0;
+  }
+  .steps-list li.final .snum{ background:var(--sage); }
+  .steps-list .stitle{font-weight:700;color:var(--navy);margin-bottom:3px;font-size:15.5px;}
+  .steps-list .sdesc{color:var(--ink-soft);font-size:14.5px;}
+
+  .acronym-strip{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin:22px 0 6px;
+    flex-wrap:wrap;
+  }
+  .acronym-strip span{
+    width:38px;height:38px;
+    border-radius:50%;
+    background:var(--sage-light);
+    color:var(--navy);
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;
+  }
+
+  .log-intro{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:16px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .log-intro .instructions{color:var(--ink-soft);font-size:14.5px;max-width:560px;}
+  .save-status{
+    font-size:13px;
+    color:var(--saved);
+    display:flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .save-status .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--saved);
+    display:inline-block;
+  }
+
+  .scenario{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:20px;
+    background:var(--paper-card);
+  }
+  .scenario:last-child{margin-bottom:0;}
+  .scenario-label{
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .situation-row{margin-bottom:14px;}
+  .situation-row label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--navy);
+    margin-bottom:5px;
+  }
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media (max-width:640px){
+    .two-col{grid-template-columns:1fr;}
+  }
+  .col-box{
+    border-radius:8px;
+    padding:12px 14px;
+  }
+  .col-box.auto{ background:var(--auto-light); border:1px solid #E3C3B2; }
+  .col-box.skillful{ background:var(--skillful-light); border:1px solid #C9DBC9; }
+  .col-box .col-title{
+    font-weight:700;
+    font-size:13.5px;
+    margin-bottom:8px;
+  }
+  .col-box.auto .col-title{ color:var(--auto); }
+  .col-box.skillful .col-title{ color:var(--skillful); }
+
+  .subfield{ margin-bottom:10px; }
+  .subfield:last-child{ margin-bottom:0; }
+  .subfield label{
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .col-box.auto .subfield label{ color:var(--auto); }
+  .col-box.skillful .subfield label{ color:var(--skillful); }
+  .subfield input[type="text"]{ background:#fff; }
+
+  .facilitator-note{
+    margin-top:16px;
+    border:1px dashed var(--line);
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    background:#FCFBF8;
+  }
+  .facilitator-note strong{ color:var(--navy); }
+
+  .poem-placeholder{
+    border:1.5px dashed var(--sage);
+    border-radius:10px;
+    padding:22px 24px;
+    background:var(--sage-light);
+    text-align:center;
+    margin-bottom:8px;
+  }
+  .poem-placeholder .pp-title{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15.5px;
+    margin-bottom:6px;
+  }
+  .poem-placeholder .pp-note{
+    color:var(--ink-soft);
+    font-size:13px;
+    max-width:480px;
+    margin:0 auto;
+  }
+
+  .poem-block{
+    text-align:center;
+    padding:8px 10px 4px;
+  }
+  .poem-block .poem-title{
+    font-size:20px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:4px;
+  }
+  .poem-block .poem-author{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .poem-block .poem-body{
+    font-style:italic;
+    font-size:16px;
+    line-height:2;
+    color:var(--ink);
+    max-width:480px;
+    margin:0 auto;
+  }
+  .poem-block .poem-credit{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:22px;
+    font-style:italic;
+  }
+
+  .example-block{
+    margin-top:22px;
+    border-radius:10px;
+    padding:18px 20px;
+    background:#FCFBF8;
+    border:1px solid var(--line);
+  }
+  .example-block .ex-label{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:700;
+    color:#fff;
+    background:var(--navy);
+    padding:2px 10px;
+    border-radius:10px;
+    margin-bottom:10px;
+  }
+  .example-block p{ margin:0 0 10px; font-size:14.5px; }
+  .example-block .ex-steps{ margin:0; padding-inline-start:0; list-style:none; }
+  .example-block .ex-steps li{ margin-bottom:7px; font-size:14px; }
+  .example-block .ex-steps b{ color:var(--navy); }
+
+  .log-table-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line);}
+  table.log{
+    width:100%;
+    border-collapse:collapse;
+    min-width:720px;
+    background:var(--paper-card);
+  }
+  table.log thead th{
+    background:var(--navy);
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    padding:12px 8px;
+    text-align:center;
+    border-right:1px solid rgba(255,255,255,.15);
+  }
+  table.log thead th:last-child{border-right:none;}
+  table.log td{
+    border-top:1px solid var(--line);
+    border-right:1px solid var(--line);
+    padding:7px;
+    vertical-align:top;
+  }
+  table.log td:last-child{border-right:none;}
+  table.log tbody tr:nth-child(even){background:#FCFBF8;}
+  .cell-day{width:100px;}
+  .cell-minutes{width:100px;}
+  .cell-mid{width:170px;}
+  .cell-notes{min-width:170px;}
+  .minutes-row{display:flex;align-items:center;gap:5px;}
+  .minutes-row span{font-size:12.5px;color:var(--ink-soft);white-space:nowrap;}
+  table.log textarea{min-height:44px;}
+
+  input[type="text"], textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:8px 9px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    resize:vertical;
+  }
+  input[type="text"]:focus, textarea:focus{
+    outline:none;
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px var(--sage-light);
+  }
+  textarea{min-height:90px;}
+
+  .toolbar{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:9px 18px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    transition:background .15s ease;
+  }
+  button:hover{background:var(--sage-light);}
+  button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  button.primary:hover{background:var(--navy-deep);}
+
+  footer{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  @media print{
+    header.masthead{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .toolbar, .save-status{display:none !important;}
+    button{display:none !important;}
+    body{padding-bottom:0;}
+  }
+
+  @media (max-width:600px){
+    h1.title{font-size:21px;}
+    .card{padding:16px;}
+    .log-intro{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index-ru.html" class="back-link">‹ Назад к программе встреч</a>
+    <span class="eyebrow">Профилактика рецидива на основе осознанности — Рабочая тетрадь участника</span>
+    <h1 class="title">Встреча 3: От импульсивной реактивности к осознанному отклику</h1>
+    <span class="subtitle">Страницы 3.1–3.4 · Гостевой дом, Пространство осознанности, практика реактивности и отклика, лист учёта</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 3.1 -->
+  <section id="s3-1">
+    <div class="section-head">
+      <span class="section-num">3.1</span>
+      <h2>Гостевой дом</h2>
+    </div>
+    <div class="card">
+      <div class="poem-block">
+        <div class="poem-title">Гостевой дом</div>
+        <div class="poem-author">Джалаладдин Руми (суфийский поэт XIII века)</div>
+        <div class="poem-body">
+          Человек — гостевой дом,<br>
+          каждое утро новые гости.<br>
+          Веселье, уныние, подлость,<br>
+          иногда понимание заглянет<br>
+          как нежданный гость.<br>
+          Приветствуй и угощай их всех!<br>
+          Даже если гости — многие муки,<br>
+          которые яростно сметут<br>
+          всю мебель в твоём доме,<br>
+          всё равно оказывай каждому честь.<br>
+          Может быть, он очистит тебя для новой радости.<br>
+          Тёмная мысль, стыд, злоба —<br>
+          встречай их у порога, смеясь,<br>
+          и приглашай войти.<br>
+          Будь благодарен, кто бы ни пришёл,<br>
+          ведь каждый был послан<br>
+          как наставник свыше.
+        </div>
+      </div>
+
+      <blockquote class="quote" style="margin-top:22px;">
+        У человека можно отнять всё, кроме одного — последней из человеческих свобод: выбирать своё отношение к любым обстоятельствам, выбирать свой путь.
+        <cite>Виктор Франкл, «Человек в поисках смысла»</cite>
+      </blockquote>
+
+      <div class="theme-line" style="margin-top:22px;">Между импульсивной автоматической реактивностью и осознанным откликом лежит способность принимать реальность</div>
+
+      <div class="topic-text">
+        <p><strong>Введение:</strong> В практике мы учимся собирать сознание, сидеть с реальностью такой, какая она есть, и создавать паузу перед реакцией. Цепочки автоматической реакции, которые заканчиваются ситуациями, не идущими нам на пользу, можно замедлить, и мы можем развивать осознанный отклик на ситуацию.</p>
+      </div>
+
+      <div class="distinction-grid" style="margin-top:22px;">
+        <div class="distinction-card auto">
+          <div class="d-title">Автоматическая реактивность</div>
+          <div class="d-text">Автоматические действия — мыслительные или поведенческие, — которые происходят «на автопилоте». Мы не присутствуем там, чтобы их выбирать, и они часто заканчиваются так, что не служат нам.</div>
+        </div>
+        <div class="distinction-card skillful">
+          <div class="d-title">Осознанный отклик</div>
+          <div class="d-text">Отклик, в котором у нас было место, чтобы обдумать, выбрать, сделать паузу перед автоматической реакцией и выбрать реакции — мыслительные или поведенческие, — которые лучше служат нам и ведут к более благоприятным результатам.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.2 -->
+  <section id="s3-2">
+    <div class="section-head">
+      <span class="section-num">3.2</span>
+      <h2>Пространство осознанности</h2>
+    </div>
+    <div class="card">
+      <div class="topic-text" style="margin-top:6px;">
+        <p>Инструмент, который мы изучаем сегодня, называется <strong>Пространство осознанности</strong> — короткое упражнение, которое можно выполнять почти где угодно и когда угодно. Его цель — открыть именно это пространство: между тем, что с нами происходит, и тем, как мы выбираем реагировать.</p>
+      </div>
+
+      <div class="acronym-strip">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+      </div>
+
+      <ol class="steps-list">
+        <li>
+          <span class="snum">1</span>
+          <div>
+            <div class="stitle">Стоп</div>
+            <div class="sdesc">Когда вы находитесь в напряжённой ситуации, или даже в случайный момент дня — остановитесь или переключите внимание с ситуации на свой внутренний опыт. Это первый шаг к выходу из автопилота.</div>
+          </div>
+        </li>
+        <li>
+          <span class="snum">2</span>
+          <div>
+            <div class="stitle">Ясное наблюдение</div>
+            <div class="sdesc">Замечайте ощущения, происходящие в теле. Замечайте также чувства, настроение и мысли, которые у вас сейчас есть — просто отмечайте как можно больше из своего опыта.</div>
+          </div>
+        </li>
+        <li>
+          <span class="snum">3</span>
+          <div>
+            <div class="stitle">Дыхание</div>
+            <div class="sdesc">Соберите своё внимание и направьте его на ощущение дыхания.</div>
+          </div>
+        </li>
+        <li>
+          <span class="snum">4</span>
+          <div>
+            <div class="stitle">Расширение</div>
+            <div class="sdesc">Расширьте свою осознанность, снова включив в неё остальное тело, мысли и чувства — пытаясь мягко удерживать всё это, исходя из принятия.</div>
+          </div>
+        </li>
+        <li class="final">
+          <span class="snum">5</span>
+          <div>
+            <div class="stitle">Умелый отклик</div>
+            <div class="sdesc">Реагируйте осознанно, исходя из того, что действительно нужно в этой ситуации, и как вы можете позаботиться о себе наилучшим образом. Это и есть осознанный отклик — выбор, который открывается в момент, когда есть пространство.</div>
+          </div>
+        </li>
+      </ol>
+
+      <div class="example-block">
+        <span class="ex-label">Пример</span>
+        <p>Вы случайно встречаете на улице старого знакомого, который в прошлом был связан с вашим употреблением. Незаметно для себя ноги уже начинают поворачивать в его сторону.</p>
+        <ol class="ex-steps">
+          <li><b>Стоп:</b> вы замечаете этот момент и замедляетесь — ещё до того, как приняли осознанное решение.</li>
+          <li><b>Ясное наблюдение:</b> замечаете учащённый пульс, лёгкое предвкушение и мысль, которая проносится — «просто поздороваться».</li>
+          <li><b>Дыхание:</b> делаете два медленных вдоха, ощущая их в теле.</li>
+          <li><b>Расширение:</b> расширяете взгляд на всю улицу — в ней есть больше одного направления, куда можно пойти.</li>
+          <li><b>Умелый отклик:</b> выбираете продолжить свой первоначальный путь, выигрывая дистанцию от ситуации до того, как она разовьётся в направлении, которое не обязательно вам служит.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.3 -->
+  <section id="s3-3">
+    <div class="section-head">
+      <span class="section-num">3.3</span>
+      <h2>Рабочий лист — Пространство осознанности</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">Выберите ситуацию за последнюю неделю — маленькую или большую. В колонке «Автоматическая реактивность» опишите, что реально возникло у вас: мысли, чувства, импульсы и поведение. В колонке «Пространство осознанности» представьте: если бы у вас в тот момент было Пространство осознанности, на что бы вы обращали внимание на каждом шаге, и как выглядел бы отклик? Данные сохраняются автоматически только в вашем браузере.</p>
+        <span class="save-status" id="saveStatus"><span class="dot"></span><span id="saveStatusText">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div id="scenariosWrap"><!-- injected by JS --></div>
+
+      <div class="toolbar">
+        <button class="primary" id="printBtn">Печать / сохранить как PDF</button>
+        <button id="clearBtn">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.4 -->
+  <section id="s3-4">
+    <div class="section-head">
+      <span class="section-num">3.4</span>
+      <h2>Лист учёта ежедневной практики</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">Каждый день записывайте формальную практику, осознанность в повседневной деятельности и использование Пространства осознанности. Данные сохраняются автоматически только в вашем браузере.</p>
+        <span class="save-status" id="saveStatusLog"><span class="dot"></span><span id="saveStatusTextLog">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th class="cell-day">День / дата</th>
+              <th class="cell-minutes">Формальная практика</th>
+              <th class="cell-mid">Повседневная деятельность</th>
+              <th class="cell-mid">Пространство осознанности / умелый отклик</th>
+              <th class="cell-notes">Заметки</th>
+            </tr>
+          </thead>
+          <tbody id="dailyLogBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button class="primary" id="printBtnLog">Печать / сохранить как PDF</button>
+        <button id="clearBtnLog">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Основано на: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;');
+  }
+
+  // ---------- 3.3 worksheet ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session3_scenarios_ru_v2';
+    const SCENARIOS = 2;
+    const wrap = document.getElementById('scenariosWrap');
+    const statusText = document.getElementById('saveStatusText');
+
+    const AUTO_FIELDS = [
+      {key:'thoughts', label:'Мысли'},
+      {key:'emotions', label:'Чувства'},
+      {key:'urges', label:'Импульсы'},
+      {key:'behavior', label:'Поведение'},
+    ];
+    const SKILLFUL_FIELDS = [
+      {key:'stop', label:'Стоп — что я заметил.а?'},
+      {key:'observe', label:'Ясное наблюдение — что я увидел.а?'},
+      {key:'breath', label:'Дыхание — на что я обратил.а внимание в своём дыхании?'},
+      {key:'expand', label:'Расширение — что ещё есть сейчас: в теле? в сознании? вокруг меня?'},
+      {key:'respond', label:'Отклик (умелый отклик) — какую реакцию я выбрал.а?'},
+    ];
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusText.textContent = 'Сохранено ✓ ' + new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusText.textContent = 'Локальное сохранение недоступно в этом браузере';
+      }
+    }
+
+    let data = loadData();
+    const fieldId = (i, field) => 's' + i + '_' + field;
+
+    function subfieldsHtml(i, fields, group){
+      return fields.map(f => {
+        const val = escapeHtml(data['scenario'+i]?.[f.key] || '');
+        return `<div class="subfield">
+          <label for="${fieldId(i,f.key)}">${f.label}</label>
+          <input type="text" id="${fieldId(i,f.key)}" data-group="${group}" placeholder="..." value="${val}">
+        </div>`;
+      }).join('');
+    }
+
+    function build(){
+      wrap.innerHTML = '';
+      for(let i=1; i<=SCENARIOS; i++){
+        const s = data['scenario'+i] || {};
+        const div = document.createElement('div');
+        div.className = 'scenario';
+        div.innerHTML = `
+          <div class="scenario-label">Ситуация ${i}</div>
+          <div class="situation-row">
+            <label for="${fieldId(i,'situation')}">Что произошло? (ситуация / триггер)</label>
+            <input type="text" id="${fieldId(i,'situation')}" placeholder="например: ссора с членом семьи" value="${escapeHtml(s.situation||'')}">
+          </div>
+          <div class="two-col">
+            <div class="col-box auto">
+              <div class="col-title">Автоматическая реактивность</div>
+              ${subfieldsHtml(i, AUTO_FIELDS, 'auto')}
+            </div>
+            <div class="col-box skillful">
+              <div class="col-title">Пространство осознанности</div>
+              ${subfieldsHtml(i, SKILLFUL_FIELDS, 'skillful')}
+            </div>
+          </div>
+        `;
+        wrap.appendChild(div);
+      }
+    }
+
+    let saveTimeout = null;
+    wrap.addEventListener('input', function(e){
+      const m = e.target.id.match(/^s(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'scenario' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      statusText.textContent = 'Сохранение...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', function(){
+      if(confirm('Очистить весь лист? Это действие необратимо.')){
+        data = {};
+        saveData(data);
+        build();
+      }
+    });
+
+    document.getElementById('printBtn').addEventListener('click', function(){
+      window.print();
+    });
+
+    build();
+    if(Object.keys(data).length){
+      statusText.textContent = 'Загружено из последнего сохранения на этом устройстве';
+    }
+  })();
+
+  // ---------- 3.4 daily practice log ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_session3_dailylog_ru_v1';
+    const ROWS = 7;
+    const body = document.getElementById('dailyLogBody');
+    const statusText = document.getElementById('saveStatusTextLog');
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusText.textContent = 'Сохранено ✓ ' + new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusText.textContent = 'Локальное сохранение недоступно в этом браузере';
+      }
+    }
+
+    let data = loadData();
+    const fieldId = (row, field) => 'r' + row + '_' + field;
+
+    function buildRows(){
+      body.innerHTML = '';
+      for(let i=1; i<=ROWS; i++){
+        const r = data['row'+i] || {};
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="cell-day"><input type="text" id="${fieldId(i,'day')}" placeholder="вторник, 12.03" value="${escapeHtml(r.day||'')}"></td>
+          <td class="cell-minutes">
+            <div class="minutes-row">
+              <input type="number" min="0" id="${fieldId(i,'minutes')}" placeholder="0" value="${escapeHtml(r.minutes||'')}">
+              <span>мин.</span>
+            </div>
+          </td>
+          <td class="cell-mid"><textarea id="${fieldId(i,'activity')}" placeholder="Какие занятия?">${escapeHtml(r.activity||'')}</textarea></td>
+          <td class="cell-mid"><textarea id="${fieldId(i,'sober')}" placeholder="Сколько раз? В каких ситуациях?">${escapeHtml(r.sober||'')}</textarea></td>
+          <td class="cell-notes"><textarea id="${fieldId(i,'notes')}" placeholder="Наблюдения, заметки...">${escapeHtml(r.notes||'')}</textarea></td>
+        `;
+        body.appendChild(tr);
+      }
+    }
+
+    let saveTimeout = null;
+    body.addEventListener('input', function(e){
+      const m = e.target.id.match(/^r(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'row' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      statusText.textContent = 'Сохранение...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    document.getElementById('clearBtnLog').addEventListener('click', function(){
+      if(confirm('Очистить весь лист? Это действие необратимо.')){
+        data = {};
+        saveData(data);
+        buildRows();
+      }
+    });
+
+    document.getElementById('printBtnLog').addEventListener('click', function(){
+      window.print();
+    });
+
+    buildRows();
+    if(Object.keys(data).length){
+      statusText.textContent = 'Загружено из последнего сохранения на этом устройстве';
+    }
+  })();
+})();
+</script>
+
+</body>
+</html>

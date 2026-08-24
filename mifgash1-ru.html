@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Встреча 1 — Автопилот и осознанное внимание | Профилактика рецидива на основе осознанности</title>
+<style>
+  :root{
+    --navy: #1E3A52;
+    --navy-deep: #16293b;
+    --sage: #6E8F72;
+    --sage-light: #E7EEE6;
+    --paper: #FAF8F3;
+    --paper-card: #FFFFFF;
+    --ink: #2B2B27;
+    --ink-soft: #57544c;
+    --line: #DCD5C7;
+    --saved: #4C7A52;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px;}
+
+  header.masthead{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:36px 0 30px;
+    margin-bottom:36px;
+  }
+  header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
+  .back-link{
+    color:#CFE0D5;
+    font-size:13.5px;
+    text-decoration:none;
+    margin-bottom:6px;
+    width:fit-content;
+  }
+  .back-link:hover{ text-decoration:underline; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#BFD1C6;
+    text-transform:none;
+    font-weight:600;
+  }
+  h1.title{
+    margin:2px 0 0;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .subtitle{
+    color:#CFE0D5;
+    font-size:15px;
+    margin-top:4px;
+  }
+
+  section{margin-bottom:40px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:14px;
+    border-bottom:2px solid var(--sage);
+    padding-bottom:8px;
+  }
+  .section-num{
+    font-variant-numeric: tabular-nums;
+    font-weight:700;
+    color:var(--sage);
+    font-size:15px;
+    background:var(--sage-light);
+    padding:3px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+  }
+
+  .topic-text p{margin:0 0 14px;}
+  .topic-text p:last-child{margin-bottom:0;}
+
+  .practice-steps{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .practice-steps li{
+    display:grid;
+    grid-template-columns:32px 1fr;
+    gap:12px;
+  }
+  .practice-steps .pnum{
+    width:32px;height:32px;border-radius:8px;
+    background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:14px;flex-shrink:0;
+  }
+  .practice-steps .ptitle{font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .practice-steps .pdesc{color:var(--ink-soft);font-size:14.5px;}
+
+  .log-intro{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:16px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .log-intro .instructions{color:var(--ink-soft);font-size:14.5px;max-width:520px;}
+  .save-status{
+    font-size:13px;
+    color:var(--saved);
+    display:flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .save-status .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--saved);
+    display:inline-block;
+  }
+
+  .log-table-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line);}
+  table.log{
+    width:100%;
+    border-collapse:collapse;
+    min-width:680px;
+    background:var(--paper-card);
+  }
+  table.log thead th{
+    background:var(--navy);
+    color:#fff;
+    font-size:13.5px;
+    font-weight:600;
+    padding:12px 10px;
+    text-align:center;
+    border-right:1px solid rgba(255,255,255,.15);
+  }
+  table.log thead th:last-child{border-right:none;}
+  table.log td{
+    border-top:1px solid var(--line);
+    border-right:1px solid var(--line);
+    padding:8px;
+    vertical-align:top;
+  }
+  table.log td:last-child{border-right:none;}
+  table.log tbody tr:nth-child(even){background:#FCFBF8;}
+
+  .cell-day{width:110px;}
+  .cell-minutes{width:110px;}
+  .cell-activity{width:210px;}
+  .cell-notes{min-width:200px;}
+
+  input[type="text"], input[type="number"], textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:7px 8px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    resize:vertical;
+  }
+  input[type="text"]:focus, input[type="number"]:focus, textarea:focus{
+    outline:none;
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px var(--sage-light);
+  }
+  .minutes-row{display:flex;align-items:center;gap:6px;}
+  .minutes-row span{font-size:13px;color:var(--ink-soft);white-space:nowrap;}
+  textarea{min-height:44px;}
+
+  .toolbar{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:9px 18px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    transition:background .15s ease;
+  }
+  button:hover{background:var(--sage-light);}
+  button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  button.primary:hover{background:var(--navy-deep);}
+
+  footer{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  @media print{
+    header.masthead{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .toolbar, .save-status{display:none !important;}
+    button{display:none !important;}
+    body{padding-bottom:0;}
+  }
+
+  @media (max-width:600px){
+    h1.title{font-size:21px;}
+    .card{padding:16px;}
+    .log-intro{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index-ru.html" class="back-link">‹ Назад к программе встреч</a>
+    <span class="eyebrow">Профилактика рецидива на основе осознанности — Рабочая тетрадь участника</span>
+    <h1 class="title">Встреча 1: Автопилот и осознанное внимание</h1>
+    <span class="subtitle">Страницы 1.2–1.3 · Тема встречи и лист еженедельной практики</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1.2 -->
+  <section id="s1-2">
+    <div class="section-head">
+      <span class="section-num">1.2</span>
+      <h2>Тема встречи 1 и ежедневная практика</h2>
+    </div>
+    <div class="card">
+      <div class="topic-text">
+        <p><strong>Тема:</strong> «Автопилот» описывает нашу склонность действовать автоматически, без осознанности. Когда мы испытываем тягу и импульсы к употреблению веществ или вовлекаемся в другое реактивное поведение, мы часто переходим на автопилот — действуем по импульсу без полного осознания происходящего, последствий и без осознанного выбора. Практика осознанности может помочь нам выйти из этого состояния автопилота, повысить нашу осознанность и принимать более осознанные решения о том, как реагировать.</p>
+      </div>
+
+      <ol class="practice-steps">
+        <li>
+          <span class="pnum">1</span>
+          <div>
+            <div class="ptitle">Сканирование тела</div>
+            <div class="pdesc">Постарайтесь практиковать сканирование тела каждый день до нашей следующей встречи. Нет «правильного способа» и нет ничего конкретного, что вы «должны» испытать — просто замечайте всё, что возникает, включая блуждание мыслей, скуку, беспокойство или сонливость. Используйте аудиозапись.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">2</span>
+          <div>
+            <div class="ptitle">Осознанность в повседневной деятельности</div>
+            <div class="pdesc">Выберите занятие, которым вы занимаетесь каждый день (например, мытьё посуды, питьё кофе или чая), и направьте на этот опыт всё своё внимание. Замечайте ощущения, мысли или чувства, которые возникают.</div>
+          </div>
+        </li>
+        <li>
+          <span class="pnum">3</span>
+          <div>
+            <div class="ptitle">Заполнение ежедневного листа практики</div>
+            <div class="pdesc">Заполняйте его каждый день (см. страницу 1.3 ниже), фиксируя свою практику осознанности и то, что вы заметили или что мешало. Будьте честны — никто не будет судить о количестве практики или о вашем опыте.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 1.3 -->
+  <section id="s1-3">
+    <div class="section-head">
+      <span class="section-num">1.3</span>
+      <h2>Лист учёта ежедневной практики</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">Каждый день записывайте свою практику осознанности, а также препятствия, наблюдения или заметки. Данные сохраняются автоматически только в вашем браузере — информация никуда не отправляется.</p>
+        <span class="save-status" id="saveStatus"><span class="dot"></span><span id="saveStatusText">Ваши данные сохранены на этом устройстве</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log" id="logTable">
+          <thead>
+            <tr>
+              <th class="cell-day">День / дата</th>
+              <th class="cell-minutes">Формальная практика с записью</th>
+              <th class="cell-activity">Осознанность в повседневной деятельности</th>
+              <th class="cell-notes">Наблюдения / заметки</th>
+            </tr>
+          </thead>
+          <tbody id="logBody">
+            <!-- rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button class="primary" id="printBtn">Печать / сохранить как PDF</button>
+        <button id="clearBtn">Очистить лист</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Основано на: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'mbrp_session1_log_ru_v1';
+  const ROWS = 7;
+  const body = document.getElementById('logBody');
+  const statusText = document.getElementById('saveStatusText');
+
+  function loadData(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    }catch(e){ return {}; }
+  }
+
+  function saveData(data){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      statusText.textContent = 'Сохранено ✓ ' + new Date().toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+    }catch(e){
+      statusText.textContent = 'Локальное сохранение недоступно в этом браузере';
+    }
+  }
+
+  let data = loadData();
+
+  function fieldId(row, field){ return 'r' + row + '_' + field; }
+
+  function buildRows(){
+    body.innerHTML = '';
+    for(let i=1; i<=ROWS; i++){
+      const rowData = data['row'+i] || {};
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="cell-day">
+          <input type="text" id="${fieldId(i,'day')}" placeholder="напр.: вторник, 12.03" value="${escapeHtml(rowData.day||'')}">
+        </td>
+        <td class="cell-minutes">
+          <div class="minutes-row">
+            <input type="number" min="0" id="${fieldId(i,'minutes')}" placeholder="0" value="${escapeHtml(rowData.minutes||'')}">
+            <span>мин.</span>
+          </div>
+        </td>
+        <td class="cell-activity">
+          <input type="text" id="${fieldId(i,'activity')}" placeholder="Какие занятия?" value="${escapeHtml(rowData.activity||'')}">
+        </td>
+        <td class="cell-notes">
+          <textarea id="${fieldId(i,'notes')}" placeholder="Наблюдения, препятствия или заметки...">${escapeHtml(rowData.notes||'')}</textarea>
+        </td>
+      `;
+      body.appendChild(tr);
+    }
+  }
+
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;');
+  }
+
+  let saveTimeout = null;
+  function onInput(e){
+    const id = e.target.id;
+    const match = id.match(/^r(\d+)_(\w+)$/);
+    if(!match) return;
+    const rowNum = match[1];
+    const field = match[2];
+    const key = 'row' + rowNum;
+    if(!data[key]) data[key] = {};
+    data[key][field] = e.target.value;
+
+    statusText.textContent = 'Сохранение...';
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => saveData(data), 400);
+  }
+
+  body.addEventListener('input', onInput);
+
+  document.getElementById('clearBtn').addEventListener('click', function(){
+    if(confirm('Очистить весь лист? Это действие необратимо.')){
+      data = {};
+      saveData(data);
+      buildRows();
+    }
+  });
+
+  document.getElementById('printBtn').addEventListener('click', function(){
+    window.print();
+  });
+
+  buildRows();
+  if(Object.keys(data).length){
+    statusText.textContent = 'Загружено из последнего сохранения на этом устройстве';
+  }
+})();
+</script>
+
+</body>
+</html>

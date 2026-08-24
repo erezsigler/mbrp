@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>צידה לדרך ההחלמה | מניעת הישנות מבוססת מיינדפולנס</title>
+<style>
+  :root{
+    --navy: #1E3A52;
+    --navy-deep: #16293b;
+    --sage: #6E8F72;
+    --sage-light: #E7EEE6;
+    --paper: #FAF8F3;
+    --paper-card: #FFFFFF;
+    --ink: #2B2B27;
+    --ink-soft: #57544c;
+    --line: #DCD5C7;
+    --saved: #4C7A52;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", Assistant, Arial, Helvetica, sans-serif;
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px;}
+
+  header.masthead{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color:#fff;
+    padding:36px 0 30px;
+    margin-bottom:36px;
+  }
+  header.masthead .wrap{display:flex;flex-direction:column;gap:6px;}
+  .back-link{
+    color:#CFE0D5;
+    font-size:13.5px;
+    text-decoration:none;
+    margin-bottom:6px;
+    width:fit-content;
+  }
+  .back-link:hover{ text-decoration:underline; }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.04em;
+    color:#BFD1C6;
+    font-weight:600;
+  }
+  h1.title{
+    margin:2px 0 0;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+  }
+  .subtitle{
+    color:#CFE0D5;
+    font-size:15px;
+    margin-top:4px;
+  }
+
+  section{margin-bottom:40px;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:14px;
+    border-bottom:2px solid var(--sage);
+    padding-bottom:8px;
+  }
+  .section-num{
+    font-variant-numeric: tabular-nums;
+    font-weight:700;
+    color:var(--sage);
+    font-size:15px;
+    background:var(--sage-light);
+    padding:3px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .section-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px 24px;
+  }
+
+  .topic-text p{margin:0 0 14px;}
+  .topic-text p:last-child{margin-bottom:0;}
+
+  .poem-placeholder{
+    border:1.5px dashed var(--sage);
+    border-radius:10px;
+    padding:22px 24px;
+    background:var(--sage-light);
+    text-align:center;
+    margin-bottom:18px;
+  }
+  .poem-placeholder .pp-title{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15.5px;
+    margin-bottom:6px;
+  }
+  .poem-placeholder .pp-note{
+    color:var(--ink-soft);
+    font-size:13px;
+    max-width:480px;
+    margin:0 auto;
+  }
+
+  .poem-block{
+    text-align:center;
+    padding:8px 10px 4px;
+    margin-bottom:18px;
+  }
+  .poem-block .poem-title{
+    font-size:18px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:18px;
+  }
+  .poem-block .poem-body{
+    font-style:italic;
+    font-size:16px;
+    line-height:2;
+    color:var(--ink);
+    max-width:480px;
+    margin:0 auto;
+  }
+
+  .poem-block{
+    text-align:center;
+    padding:8px 10px 20px;
+  }
+  .poem-block .poem-body{
+    font-style:italic;
+    font-size:16px;
+    line-height:2;
+    color:var(--ink);
+    max-width:480px;
+    margin:0 auto;
+  }
+
+  .log-intro{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:16px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .log-intro .instructions{color:var(--ink-soft);font-size:14.5px;max-width:560px;}
+  .save-status{
+    font-size:13px;
+    color:var(--saved);
+    display:flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .save-status .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--saved);
+    display:inline-block;
+  }
+
+  .log-table-scroll{overflow-x:auto;border-radius:10px;border:1px solid var(--line);}
+  table.log{
+    width:100%;
+    border-collapse:collapse;
+    min-width:560px;
+    background:var(--paper-card);
+  }
+  table.log thead th{
+    background:var(--navy);
+    color:#fff;
+    font-size:13.5px;
+    font-weight:600;
+    padding:12px 10px;
+    text-align:center;
+    border-left:1px solid rgba(255,255,255,.15);
+  }
+  table.log thead th:last-child{border-left:none;}
+  table.log td{
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+    padding:8px;
+    vertical-align:top;
+  }
+  table.log td:last-child{border-left:none;}
+  table.log tbody tr:nth-child(even){background:#FCFBF8;}
+
+  input[type="text"], textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:7px 8px;
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    resize:vertical;
+  }
+  input[type="text"]:focus, textarea:focus{
+    outline:none;
+    border-color:var(--sage);
+    box-shadow:0 0 0 3px var(--sage-light);
+  }
+  table.log textarea{min-height:52px;}
+
+  /* reminder card */
+  .card-flip{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  @media (max-width:640px){ .card-flip{grid-template-columns:1fr;} }
+  .card-side{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+    background:#FCFBF8;
+  }
+  .card-side .side-label{
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--ink-soft);
+    letter-spacing:.03em;
+    margin-bottom:14px;
+  }
+  .card-sub{
+    font-weight:700;
+    color:var(--navy);
+    font-size:14.5px;
+    margin:16px 0 8px;
+  }
+  .card-sub:first-of-type{margin-top:0;}
+  .fixed-list{list-style:none;margin:0 0 4px;padding:0;}
+  .fixed-list li{
+    font-size:13.5px;
+    color:var(--ink);
+    margin-bottom:6px;
+    padding-inline-start:16px;
+    position:relative;
+  }
+  .fixed-list li::before{
+    content:"•";
+    color:var(--sage);
+    position:absolute;
+    right:0;
+    font-weight:700;
+  }
+  html[dir="rtl"] .fixed-list li::before{ right:0; left:auto; }
+  .fillable-list{list-style:none;margin:0;padding:0;}
+  .fillable-list li{margin-bottom:6px;}
+  .fillable-list input{font-size:13.5px;padding:5px 8px;}
+
+  .reflect-block{margin-bottom:22px;}
+  .reflect-block:last-child{margin-bottom:0;}
+  .reflect-q{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  .reflect-block textarea{min-height:90px;}
+
+  .toolbar{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+    flex-wrap:wrap;
+  }
+  button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:9px 18px;
+    cursor:pointer;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--navy);
+    transition:background .15s ease;
+  }
+  button:hover{background:var(--sage-light);}
+  button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  button.primary:hover{background:var(--navy-deep);}
+
+  footer{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  @media print{
+    header.masthead{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .toolbar, .save-status{display:none !important;}
+    button{display:none !important;}
+    body{padding-bottom:0;}
+  }
+
+  @media (max-width:600px){
+    h1.title{font-size:21px;}
+    .card{padding:16px;}
+    .log-intro{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a href="index.html" class="back-link">‹ חזרה לתוכנית המפגשים</a>
+    <span class="eyebrow">מניעת הישנות מבוססת מיינדפולנס — חוברת משתתף</span>
+    <h1 class="title">צידה לדרך ההחלמה</h1>
+    <span class="subtitle">דפים 1–4 · חברות בדרך, פעילויות נעימות, כרטיס תזכורת, ותכנון אישי להמשך</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1 -->
+  <section id="s-1">
+    <div class="section-head">
+      <span class="section-num">1</span>
+      <h2>חברות בדרך</h2>
+    </div>
+    <div class="card">
+      <div class="poem-block">
+        <div class="poem-title">רומי</div>
+        <div class="poem-body">
+          הדרך הזאת דורשת אומץ וסיבולת, ובכל זאת היא מלאה בעקבות!<br>
+          מי הם אלה הצועדים בה?<br>
+          הם שלבים בסולם שלך. היעזר בהם!<br>
+          עם חברה אתה מזרז את עלייתך.<br>
+          אתה עשוי להיות מאושר דיו לבד בדרך,<br>
+          אבל עם אחרים — תגיע רחוק יותר, ומהר יותר.
+        </div>
+      </div>
+
+      <div class="topic-text">
+        <p>אין זה מקרי שרבים מהתרגולים שלמדנו כאן נעשו יחד - מרחב (וירטואלי) משותף, נוכחות של אחרים, והכי חשוב - השיתוף. אין זה מקרי שתרגולים אלה נעשים בכל העולם, לכל אורך ההיסטוריה, במרחבים משותפים. תרגול משותף לא רק מזכיר לנו שאיננו לבד - הוא גם מחזיק אותנו ברגעים שבהם קשה לנו להחזיק את עצמנו.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="s-2">
+    <div class="section-head">
+      <span class="section-num">2</span>
+      <h2>דף עבודה — פעילויות נעימות</h2>
+    </div>
+    <div class="card">
+      <div class="topic-text">
+        <p>עסקנו הרבה בקבלה של אורחים לא נעימים ולא רצויים. אך תגובות מיומנות ושמירה על הרווחה האישית כוללים גם הכרת הדברים הנעימים לנו - בלי היאחזות, ובלי כפייתיות, אך עם מגע מיומן בהם.</p>
+      </div>
+
+      <div class="log-intro">
+        <p class="instructions">רשמו פעילויות, אנשים ומקומות (שאינם כוללים שימוש בחומרים) שאתם מקשרים עם הנאה או שמחה, או שמגבירים את הביטחון שלכם. ציינו כיצד אתם נוטים להרגיש כשאתם עוסקים בהם. המילוי נשמר אוטומטית בדפדפן שלכם בלבד.</p>
+        <span class="save-status" id="saveStatus2"><span class="dot"></span><span id="saveStatusText2">הנתונים שלכם שמורים במכשיר זה</span></span>
+      </div>
+
+      <div class="log-table-scroll">
+        <table class="log">
+          <thead>
+            <tr>
+              <th style="width:45%;">פעילות, אדם, מקום או מצב</th>
+              <th>כיצד אתם נוטים להרגיש?</th>
+            </tr>
+          </thead>
+          <tbody id="pleasantBody"><!-- injected by JS --></tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn2">נקה גיליון</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="s-3">
+    <div class="section-head">
+      <span class="section-num">3</span>
+      <h2>כרטיס תזכורת</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">ממלאים חופשי - זה כרטיס אישי שאתם יכולים לחזור אליו כשצריך תזכורת. המילוי נשמר אוטומטית בדפדפן שלכם בלבד.</p>
+        <span class="save-status" id="saveStatus3"><span class="dot"></span><span id="saveStatusText3">הנתונים שלכם שמורים במכשיר זה</span></span>
+      </div>
+
+      <div class="card-flip">
+        <div class="card-side">
+          <div class="card-sub">סיבות להישאר בדרך</div>
+          <ul class="fillable-list" id="reasonsList"></ul>
+
+          <div class="card-sub">מרחב ערנות</div>
+          <ul class="fixed-list">
+            <li>עצור: עצרו היכן שאתם</li>
+            <li>ראו בבהירות: הבחינו במה שקורה עכשיו</li>
+            <li>נשמו: הפנו את המוקד לנשימתכם</li>
+            <li>הרחיבו את המודעות שלכם</li>
+            <li>הגיבו במודעות</li>
+          </ul>
+        </div>
+
+        <div class="card-side">
+          <div class="card-sub">פעילויות / תוכניות חלופיות</div>
+          <ul class="fillable-list" id="altList"></ul>
+
+          <div class="card-sub">משאבים</div>
+          <ul class="fillable-list" id="resList"></ul>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <button id="clearBtn3">נקה גיליון</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="s-4">
+    <div class="section-head">
+      <span class="section-num">4</span>
+      <h2>תכנון אישי להמשך תרגול</h2>
+    </div>
+    <div class="card">
+      <div class="log-intro">
+        <p class="instructions">קחו כמה רגעים לחשוב קדימה. המילוי נשמר אוטומטית בדפדפן שלכם בלבד.</p>
+        <span class="save-status" id="saveStatus4"><span class="dot"></span><span id="saveStatusText4">הנתונים שלכם שמורים במכשיר זה</span></span>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">מבין כל צורות התרגול שלמדתי, איזה דפוס אני רוצה להמשיך בו על בסיס קבוע?</div>
+        <textarea id="r4_pattern" placeholder="לדוגמה: ישיבה 3 פעמים בשבוע, סריקת גוף 3 פעמים בשבוע..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">איך אני מתכוון.ת להמשיך לשלב מרחב ערנות בחיי היומיום?</div>
+        <textarea id="r4_sober" placeholder="כתבו כאן..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">איזו פעילות מזינה אחת (מדף הפעילויות הנעימות) אני מתחייב.ת לשלב השבוע?</div>
+        <textarea id="r4_nourishing" placeholder="כתבו כאן..."></textarea>
+      </div>
+
+      <div class="reflect-block">
+        <div class="reflect-q">מי או מה יכול לתמוך בי בהמשך הדרך? (אנשים, קבוצות תמיכה, משאבים)</div>
+        <textarea id="r4_support" placeholder="כתבו כאן..."></textarea>
+      </div>
+
+      <div class="toolbar">
+        <button class="primary" id="shareBtn">שיתוף כרטיס ותכנון כ-PDF</button>
+        <button id="printBtn">הדפסה / שמירה כ-PDF</button>
+        <button id="clearBtn4">נקה גיליון</button>
+      </div>
+      <div class="copy-feedback" id="shareFeedback" style="font-size:13px;color:var(--saved);margin-top:10px;min-height:18px;"></div>
+    </div>
+  </section>
+
+  <div id="pdfExportView" style="position:fixed; left:-9999px; top:0; width:700px; background:#fff; padding:36px; font-family:inherit; color:var(--ink); direction:rtl;">
+    <div style="background:var(--navy); color:#fff; padding:18px 24px; border-radius:8px; margin-bottom:24px;">
+      <div style="font-size:12px; color:#BFD1C6; margin-bottom:4px;">מניעת הישנות מבוססת מיינדפולנס — צידה לדרך ההחלמה</div>
+      <div style="font-size:20px; font-weight:700;">כרטיס תזכורת ותכנון אישי להמשך</div>
+    </div>
+
+    <div style="font-size:15px; font-weight:700; color:var(--navy); border-bottom:2px solid var(--sage); padding-bottom:6px; margin-bottom:12px;">כרטיס תזכורת</div>
+
+    <div style="font-weight:700; color:var(--navy); font-size:14px; margin:14px 0 6px;">סיבות להישאר בדרך</div>
+    <ul id="pdfReasons" style="margin:0 0 4px; padding-inline-start:18px; font-size:13.5px;"></ul>
+
+    <div style="font-weight:700; color:var(--navy); font-size:14px; margin:14px 0 6px;">מרחב ערנות</div>
+    <ul style="margin:0 0 4px; padding-inline-start:18px; font-size:13.5px;">
+      <li>עצור: עצרו היכן שאתם</li>
+      <li>ראו בבהירות: הבחינו במה שקורה עכשיו</li>
+      <li>נשמו: הפנו את המוקד לנשימתכם</li>
+      <li>הרחיבו את המודעות שלכם</li>
+      <li>הגיבו במודעות</li>
+    </ul>
+
+    <div style="font-weight:700; color:var(--navy); font-size:14px; margin:14px 0 6px;">פעילויות / תוכניות חלופיות</div>
+    <ul id="pdfAlt" style="margin:0 0 4px; padding-inline-start:18px; font-size:13.5px;"></ul>
+
+    <div style="font-weight:700; color:var(--navy); font-size:14px; margin:14px 0 6px;">משאבים</div>
+    <ul id="pdfRes" style="margin:0 0 4px; padding-inline-start:18px; font-size:13.5px;"></ul>
+
+    <div style="font-size:15px; font-weight:700; color:var(--navy); border-bottom:2px solid var(--sage); padding-bottom:6px; margin:28px 0 12px;">תכנון אישי להמשך תרגול</div>
+
+    <div style="font-weight:700; color:var(--navy); font-size:13.5px; margin:14px 0 4px;">מבין כל צורות התרגול שלמדתי, איזה דפוס אני רוצה להמשיך בו על בסיס קבוע?</div>
+    <div id="pdfPattern" style="font-size:13.5px; color:var(--ink); white-space:pre-wrap;"></div>
+
+    <div style="font-weight:700; color:var(--navy); font-size:13.5px; margin:14px 0 4px;">איך אני מתכוון.ת להמשיך לשלב מרחב ערנות בחיי היומיום?</div>
+    <div id="pdfSober" style="font-size:13.5px; color:var(--ink); white-space:pre-wrap;"></div>
+
+    <div style="font-weight:700; color:var(--navy); font-size:13.5px; margin:14px 0 4px;">איזו פעילות מזינה אחת אני מתחייב.ת לשלב השבוע?</div>
+    <div id="pdfNourishing" style="font-size:13.5px; color:var(--ink); white-space:pre-wrap;"></div>
+
+    <div style="font-weight:700; color:var(--navy); font-size:13.5px; margin:14px 0 4px;">מי או מה יכול לתמוך בי בהמשך הדרך?</div>
+    <div id="pdfSupport" style="font-size:13.5px; color:var(--ink); white-space:pre-wrap;"></div>
+  </div>
+
+  <footer>
+    מבוסס על: Bowen, Chawla, Grow &amp; Marlatt (2021). Mindfulness-Based Relapse Prevention for Addictive Behaviors, Second Edition: A Clinician's Guide. Guilford Press.
+  </footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+  function escapeHtml(str){
+    return String(str)
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;');
+  }
+
+  // ---------- 2: pleasant activities table ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_closing1_pleasant_v1';
+    const ROWS = 3;
+    const body = document.getElementById('pleasantBody');
+    const statusText = document.getElementById('saveStatusText2');
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusText.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusText.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+      }
+    }
+
+    let data = loadData();
+
+    function buildRows(){
+      body.innerHTML = '';
+      for(let i=1; i<=ROWS; i++){
+        const r = data['row'+i] || {};
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><textarea id="r${i}_what" placeholder="פעילות, אדם, מקום או מצב...">${escapeHtml(r.what||'')}</textarea></td>
+          <td><textarea id="r${i}_feel" placeholder="כיצד אתם נוטים להרגיש?">${escapeHtml(r.feel||'')}</textarea></td>
+        `;
+        body.appendChild(tr);
+      }
+    }
+
+    let saveTimeout = null;
+    body.addEventListener('input', function(e){
+      const m = e.target.id.match(/^r(\d+)_(\w+)$/);
+      if(!m) return;
+      const key = 'row' + m[1];
+      const field = m[2];
+      if(!data[key]) data[key] = {};
+      data[key][field] = e.target.value;
+
+      statusText.textContent = 'שומר...';
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => saveData(data), 400);
+    });
+
+    document.getElementById('clearBtn2').addEventListener('click', function(){
+      if(confirm('לנקות את כל הגיליון? הפעולה לא ניתנת לביטול.')){
+        data = {};
+        saveData(data);
+        buildRows();
+      }
+    });
+
+    buildRows();
+    if(Object.keys(data).length){ statusText.textContent = 'נטען מהשמירה האחרונה במכשיר זה'; }
+  })();
+
+  // ---------- 3: reminder card fillable lists ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_closing1_card_v1';
+    const statusText = document.getElementById('saveStatusText3');
+    const LISTS = {
+      reasonsList: {key:'reasons', rows:3, placeholder:'סיבה...'},
+      altList: {key:'alt', rows:3, placeholder:'פעילות או תוכנית חלופית...'},
+      resList: {key:'res', rows:3, placeholder:'משאב, איש קשר...'}
+    };
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusText.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusText.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+      }
+    }
+
+    let data = loadData();
+
+    function build(){
+      Object.keys(LISTS).forEach(listId => {
+        const conf = LISTS[listId];
+        const ul = document.getElementById(listId);
+        ul.innerHTML = '';
+        const values = data[conf.key] || [];
+        for(let i=0; i<conf.rows; i++){
+          const li = document.createElement('li');
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.placeholder = conf.placeholder;
+          input.value = values[i] || '';
+          input.dataset.listKey = conf.key;
+          input.dataset.idx = i;
+          li.appendChild(input);
+          ul.appendChild(li);
+        }
+      });
+    }
+
+    let saveTimeout = null;
+    document.querySelectorAll('.card-side').forEach(side => {
+      side.addEventListener('input', function(e){
+        const key = e.target.dataset.listKey;
+        const idx = parseInt(e.target.dataset.idx, 10);
+        if(!key) return;
+        if(!data[key]) data[key] = [];
+        data[key][idx] = e.target.value;
+
+        statusText.textContent = 'שומר...';
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(() => saveData(data), 400);
+      });
+    });
+
+    document.getElementById('clearBtn3').addEventListener('click', function(){
+      if(confirm('לנקות את כל הכרטיס? הפעולה לא ניתנת לביטול.')){
+        data = {};
+        saveData(data);
+        build();
+      }
+    });
+
+    document.getElementById('shareBtn').addEventListener('click', async function(){
+      const feedback = document.getElementById('shareFeedback');
+      const btn = this;
+      btn.disabled = true;
+      feedback.textContent = 'מכין PDF...';
+
+      try{
+        function fillList(elId, values){
+          const ul = document.getElementById(elId);
+          ul.innerHTML = '';
+          const filled = (values || []).filter(v => v && v.trim());
+          if(filled.length === 0){
+            const li = document.createElement('li');
+            li.textContent = '(לא מולא)';
+            li.style.color = '#999';
+            ul.appendChild(li);
+            return;
+          }
+          filled.forEach(v => {
+            const li = document.createElement('li');
+            li.textContent = v;
+            ul.appendChild(li);
+          });
+        }
+        fillList('pdfReasons', data.reasons);
+        fillList('pdfAlt', data.alt);
+        fillList('pdfRes', data.res);
+
+        const planData = (function(){
+          try{ const raw = localStorage.getItem('mbrp_closing1_plan_v1'); return raw ? JSON.parse(raw) : {}; }
+          catch(e){ return {}; }
+        })();
+        document.getElementById('pdfPattern').textContent = planData.r4_pattern || '(לא מולא)';
+        document.getElementById('pdfSober').textContent = planData.r4_sober || '(לא מולא)';
+        document.getElementById('pdfNourishing').textContent = planData.r4_nourishing || '(לא מולא)';
+        document.getElementById('pdfSupport').textContent = planData.r4_support || '(לא מולא)';
+
+        const exportEl = document.getElementById('pdfExportView');
+        const canvas = await html2canvas(exportEl, { scale: 2, useCORS: true });
+
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        const imgWidth = pageWidth;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        let heightLeft = imgHeight;
+        let position = 0;
+        const imgData = canvas.toDataURL('image/png');
+
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+        while(heightLeft > 0){
+          position = heightLeft - imgHeight;
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+        }
+
+        const pdfBlob = pdf.output('blob');
+        const file = new File([pdfBlob], 'כרטיס-תזכורת-ותכנון.pdf', { type: 'application/pdf' });
+
+        if(navigator.canShare && navigator.canShare({ files: [file] })){
+          await navigator.share({
+            files: [file],
+            title: 'כרטיס תזכורת ותכנון אישי',
+            text: 'כרטיס התזכורת והתכנון האישי שלי מהתוכנית'
+          });
+          feedback.textContent = 'נשלח לשיתוף ✓';
+        } else {
+          const url = URL.createObjectURL(pdfBlob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'כרטיס-תזכורת-ותכנון.pdf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          feedback.textContent = 'שיתוף ישיר לא נתמך בדפדפן זה - ה-PDF הורד, אפשר לצרף אותו ידנית להודעה.';
+        }
+      }catch(e){
+        if(e && e.name === 'AbortError'){
+          feedback.textContent = '';
+        } else {
+          feedback.textContent = 'משהו השתבש ביצירת ה-PDF. נסו שוב.';
+        }
+      }
+      btn.disabled = false;
+    });
+
+    build();
+    if(Object.keys(data).length){ statusText.textContent = 'נטען מהשמירה האחרונה במכשיר זה'; }
+  })();
+
+  // ---------- 4: personal plan ----------
+  (function(){
+    const STORAGE_KEY = 'mbrp_closing1_plan_v1';
+    const statusEl = document.getElementById('saveStatusText4');
+    const fields = ['r4_pattern','r4_sober','r4_nourishing','r4_support'].map(id => document.getElementById(id));
+
+    function loadData(){
+      try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
+      catch(e){ return {}; }
+    }
+    function saveData(data){
+      try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        statusEl.textContent = 'נשמר ✓ ' + new Date().toLocaleTimeString('he-IL', {hour:'2-digit', minute:'2-digit'});
+      }catch(e){
+        statusEl.textContent = 'שמירה מקומית לא זמינה בדפדפן זה';
+      }
+    }
+
+    let data = loadData();
+    fields.forEach(f => { f.value = data[f.id] || ''; });
+    if(Object.keys(data).length){ statusEl.textContent = 'נטען מהשמירה האחרונה במכשיר זה'; }
+
+    let saveTimeout = null;
+    fields.forEach(f => {
+      f.addEventListener('input', function(){
+        data[f.id] = f.value;
+        statusEl.textContent = 'שומר...';
+        clearTimeout(saveTimeout);
+        saveTimeout = setTimeout(() => saveData(data), 400);
+      });
+    });
+
+    document.getElementById('clearBtn4').addEventListener('click', function(){
+      if(confirm('לנקות את כל התשובות? הפעולה לא ניתנת לביטול.')){
+        data = {};
+        fields.forEach(f => f.value = '');
+        saveData(data);
+      }
+    });
+  })();
+
+  document.getElementById('printBtn').addEventListener('click', function(){
+    window.print();
+  });
+})();
+</script>
+
+</body>
+</html>
